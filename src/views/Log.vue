@@ -3,21 +3,20 @@
     <h1>Log</h1>
     <section class="logbook">
       <ol class="jumps">
-        <li v-for="jump in logbook" :key="jump.id" class="jump"> 
-          <!--<p>{{ jump.jumpNumber }}</p>-->
-          <p>{{ jumpDate(jump.date) }}</p>
-          <p>Location: {{ jump.location }}</p>
-          <p>Aircraft: {{ jump.aircraft }}</p>
-          <p>Altitude: {{ jump.exitAltitude }}</p>
-          <p>Delay: {{ jump.freefallDelay }}s</p>
-          <p>Notes: {{ jump.notes }}</p>
-          <p>Type: {{ jump.jumpType }}</p>
+        <li v-for="jump in logbook" :key="jump.id" class="jump">
+          <p class="jump__number">{{ jump.jumpNumber }}</p>
+          <div class="jump__overview">
+            <p class="jump__date">{{ jumpDate(jump.date) }}</p>
+            <p>Location: {{ jump.location }}</p>
+            <p>Aircraft: {{ jump.aircraft }}</p>
+            <p>Altitude: {{ jump.exitAltitude }}</p>
+            <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
+            <!--<p>Notes: {{ jump.notes }}</p>-->
+            <p>Type: {{ jump.jumpType }}</p>
+          </div>
         </li>
       </ol>
     </section>
-    <pre>
-      {{ logbook }}
-    </pre>
   </div>
 </template>
 
@@ -34,10 +33,10 @@ export default {
     }
   },
   methods: {
-    jumpDate(d) {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      const formattedDate = new Date(d).toLocaleDateString('en-US', options);
-      return formattedDate;
+    jumpDate (d) {
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      const formattedDate = new Date(d).toLocaleDateString('en-US', options)
+      return formattedDate
     }
   }
 }
@@ -50,7 +49,28 @@ export default {
 }
 .jump {
   background: #fff;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 4px;
+  display: flex;
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex: 0 0 20%;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  &__overview {
+    padding: 1rem;
+  }
+  &__date {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  p {
+    margin: 0;
+  }
 }
 </style>
