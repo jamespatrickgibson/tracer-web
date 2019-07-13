@@ -1,9 +1,56 @@
 <template>
   <div class="log">
-    <h1>Log</h1>
-    <section class="logbook">
+    <h1>Logbook</h1>
+    <div class="jump-form">
+      <h2>Add new jump</h2>
+      <p>Jump Number <input v-model.number="newJump.jumpNumber" type="number"/></p>
+      <p>
+        <label>Location
+          <input v-model.lazy="newJump.location"/>
+        </label>
+      </p>
+      <p>
+        <label>Exit Altitude
+          <input v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+        </label>
+      </p>
+      <p>Notes <textarea v-model.lazy="newJump.notes"/></p>
+      <p>Jump Type <input v-model.lazy="newJump.jumpType"/></p>
+      <button @click="addJump">Add Jump</button>
+    </div>
+    <!--<pre>{{ newJump }}</pre>-->
+
+    <hr>
+    <h2>All Jumps</h2>
+    <!--
+    <div class="jump-list" v-for="(jump, n) in jumps" :key="jump.name">
+      <p>
+        <span><pre>{{ jump }}</pre></span>
+        <button @click="removeJump(n)">Delete Jump</button>
+      </p>
+    </div>
+    -->
+    <ol class="jumps">
+      <li v-for="(jump, n) in sortedJumps" :key="jump.jumpNumber" class="jump">
+        <p class="jump__number">{{ jump.jumpNumber }}</p>
+        <div class="jump__overview">
+          <p class="jump__date">{{ jumpDate(jump.date) }}</p>
+          <p>Location: {{ jump.location }}</p>
+          <p>Aircraft: {{ jump.aircraft }}</p>
+          <p>Altitude: {{ jump.exitAltitude }}</p>
+          <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
+          <!--<p>Notes: {{ jump.notes }}</p>-->
+          <p>Type: {{ jump.jumpType }}</p>
+          <button @click="removeJump(n)">Delete Jump</button>
+        </div>
+      </li>
+    </ol>
+
+    <hr>
+
+    <section class="logbook" v-show="false">
       <ol class="jumps">
-        <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in logbook" :key="jump.jumpNumber" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
             <p class="jump__date">{{ jumpDate(jump.date) }}</p>
@@ -29,22 +76,66 @@ export default {
   name: 'log',
   data () {
     return {
-      logbook: logbookData
+      logbook: logbookData,
+      jumps: [],
+      newJump: {
+        id: null,
+        jumpNumber: null,
+        date: new Date().toISOString(),
+        location: null,
+        exitAltitude: null,
+        notes: null,
+        jumpType: null
+      }
+    }
+  },
+  mounted () {
+    if (localStorage.getItem('jumps')) {
+      try {
+        let jumpData = JSON.parse(localStorage.getItem('jumps'))
+        this.jumps = jumpData
+      } catch (e) {
+        localStorage.removeItem('jumps')
+      }
     }
   },
   computed: {
     sortedJumps () {
-      return this.logbook.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
+      return this.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
     }
   },
   methods: {
+    addJump () {
+      // Ensure that something is typed
+      if (!this.newJump) {
+        return
+      }
+
+      this.jumps.push(this.newJump)
+      this.newJump = {
+        id: null,
+        jumpNumber: (this.sortedJumps[0].jumpNumber + 1),
+        date: new Date().toISOString(),
+        location: null,
+        exitAltitude: null,
+        notes: null,
+        jumpType: null
+      }
+      this.saveJumps()
+    },
+
+    removeJump (x) {
+      this.jumps.splice(x, 1)
+      this.saveJumps()
+    },
+    saveJumps () {
+      const parsed = JSON.stringify(this.jumps)
+      localStorage.setItem('jumps', parsed)
+    },
     jumpDate (d) {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       const formattedDate = new Date(d).toLocaleDateString('en-US', options)
       return formattedDate
-    },
-    sortItems () {
-      // homes.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     }
   }
 }
