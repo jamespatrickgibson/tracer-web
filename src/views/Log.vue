@@ -23,13 +23,22 @@
         </label>
       </p>
       <p>
-        <label>Notes
-          <textarea v-model.lazy="newJump.notes"/>
+        <label>Jump Type
+          <select v-model="newJump.jumpType">
+            <option disabled value="">Select a Jump Type</option>
+            <option>CReW</option>
+            <option>Formation Skydive</option>
+            <option>Freefly</option>
+            <option>Hop and Pop</option>
+            <option>Tracking</option>
+            <option>Vertical Formation</option>
+            <option>Wingsuit</option>
+          </select>
         </label>
       </p>
       <p>
-        <label>Jump Type
-          <input v-model.lazy="newJump.jumpType"/>
+        <label>Notes
+          <textarea v-model.lazy="newJump.notes"/>
         </label>
       </p>
       <button @click="addJump">Add Jump</button>
@@ -50,12 +59,12 @@
         <p class="jump__number">{{ jump.jumpNumber }}</p>
         <div class="jump__overview">
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
-          <p>{{ jump.location }}</p>
+          <p class="jump__location">{{ jump.location }}</p>
+          <p class="jump__type">{{ jump.jumpType }}</p>
           <p>Aircraft: {{ jump.aircraft }}</p>
-          <p>Altitude: {{ jump.exitAltitude }}</p>
+          <p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <p>Type: {{ jump.jumpType }}</p>
           <button @click="removeJump(n)">Delete Jump</button>
         </div>
       </li>
@@ -96,9 +105,9 @@ export default {
         jumpNumber: null,
         date: new Date().toISOString(),
         location: '',
-        exitAltitude: null,
+        exitAltitude: 10000,
         notes: null,
-        jumpType: null
+        jumpType: ''
       }
     }
   },
@@ -130,7 +139,7 @@ export default {
         jumpNumber: (this.sortedJumps[0].jumpNumber + 1),
         date: new Date().toISOString(),
         location: null,
-        exitAltitude: null,
+        exitAltitude: 10000,
         notes: null,
         jumpType: null
       }
@@ -194,6 +203,13 @@ $radius: 6px;
 // Shadows
 $box-shadow: 0 30px 60px -12px rgba($blue-grey-700, 0.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
 
+// Responsive Sizes
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$tablet: 769px;
+$desktop: 960px;
+$widescreen: 1152px;
+$fullhd: 1344px;
+
 // Basic Type
 h1,
 h2,
@@ -202,13 +218,29 @@ h4 {
   font-weight: 400;
 }
 
+// Mixins
+@mixin mobile {
+  @media screen and (max-width: $tablet - 1px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
 // Logbook Page
 .log {
   border-top: 8px solid $teal-600;
   background: $background-light;
   color: $text-light;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.5rem;
+
+  @include desktop() {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 // Jump Form
@@ -220,14 +252,19 @@ h4 {
   border-radius: $radius;
 
   label {
-    font-size: 0.75rem;
+    // font-size: 0.75rem;
     font-weight: bold;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 1.125rem;
   }
 }
 // Jump List
 .jumps {
   list-style-type: none;
-  padding: 0.5rem;
+  padding: 0;
 }
 .jump {
   background: #fff;
@@ -254,6 +291,12 @@ h4 {
     font-weight: bold;
     text-transform: uppercase;
     color: $muted;
+  }
+  &__location {
+    font-size: 0.875rem;
+  }
+  &__type {
+    font-size: 1.25rem;
   }
   p {
     margin: 0;
