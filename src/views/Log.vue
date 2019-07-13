@@ -10,7 +10,12 @@
       </p>
       <p>
         <label>Location
-          <input v-model.lazy="newJump.location"/>
+          <select v-model="newJump.location">
+            <option disabled value="">Select a Location</option>
+            <option>Skydive CNY</option>
+            <option>Skydive The Ranch</option>
+            <option>Jumptown</option>
+          </select>
         </label>
       </p>
       <p>
@@ -32,7 +37,6 @@
     </div>
     <!--<pre>{{ newJump }}</pre>-->
 
-    <hr>
     <h2>All Jumps</h2>
     <!--
     <div class="jump-list" v-for="(jump, n) in jumps" :key="jump.name">
@@ -47,7 +51,7 @@
         <p class="jump__number">{{ jump.jumpNumber }}</p>
         <div class="jump__overview">
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
-          <p>Location: {{ jump.location }}</p>
+          <p>{{ jump.location }}</p>
           <p>Aircraft: {{ jump.aircraft }}</p>
           <p>Altitude: {{ jump.exitAltitude }}</p>
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
@@ -57,8 +61,6 @@
         </div>
       </li>
     </ol>
-
-    <hr>
 
     <section class="logbook" v-show="false">
       <ol class="jumps">
@@ -94,7 +96,7 @@ export default {
         id: null,
         jumpNumber: null,
         date: new Date().toISOString(),
-        location: null,
+        location: '',
         exitAltitude: null,
         notes: null,
         jumpType: null
@@ -154,14 +156,71 @@ export default {
 </script>
 
 <style lang="scss">
+// Color
+// Primary
+$teal-050: #EFFCF6;
+$teal-100: #C6F7E2;
+$teal-200: #8EEDC7;
+$teal-300: #65D6AD;
+$teal-400: #3EBD93;
+$teal-500: #27AB83;
+$teal-600: #199473;
+$teal-700: #147D64;
+$teal-800: #0C6B58;
+$teal-900: #014D40;
+
+// Neutrals
+$blue-grey-050: #F0F4F8;
+$blue-grey-100: #D9E2EC;
+$blue-grey-200: #BCCCDC;
+$blue-grey-300: #9FB3C8;
+$blue-grey-400: #829AB1;
+$blue-grey-500: #627D98;
+$blue-grey-600: #486581;
+$blue-grey-700: #334E68;
+$blue-grey-800: #243B53;
+$blue-grey-900: #102A43;
+
+// Semantic Colors
+$text-light:  $blue-grey-800;
+$text-dark: $blue-grey-050;
+$muted: $blue-grey-400;
+$background-dark: $blue-grey-900;
+
+// Radii
+$radius: 4px;
+
+// Logbook Page
+.log {
+  border-top: 8px solid $teal-600;
+  background: $background-dark;
+  color: $text-dark;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+// Jump Form
+.jump-form {
+  background: white;
+  color: $text-light;
+  padding: 0.5rem;
+  border-radius: $radius;
+
+  label {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+}
+// Jump List
 .jumps {
   list-style-type: none;
   padding: 0.5rem;
 }
 .jump {
   background: #fff;
+  color: $text-light;
   margin-bottom: 0.25rem;
-  border-radius: 4px;
+  border-radius: $radius;
   display: flex;
 
   &__number {
@@ -171,6 +230,7 @@ export default {
     flex: 0 0 20%;
     font-size: 2rem;
     font-weight: bold;
+    color: $blue-grey-900;
   }
   &__overview {
     padding: 1rem;
@@ -179,6 +239,7 @@ export default {
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
+    color: $muted;
   }
   p {
     margin: 0;
