@@ -1,6 +1,5 @@
 <template>
   <div class="log">
-    <h1>Logbook</h1>
     <div class="jump-form">
       <h2>Add new jump</h2>
       <p>
@@ -183,18 +182,31 @@ $blue-grey-900: #102A43;
 
 // Semantic Colors
 $text-light:  $blue-grey-800;
+$background-light: $blue-grey-050;
+
 $text-dark: $blue-grey-050;
-$muted: $blue-grey-400;
 $background-dark: $blue-grey-900;
+$muted: $blue-grey-400;
 
 // Radii
-$radius: 4px;
+$radius: 6px;
+
+// Shadows
+$box-shadow: 0 30px 60px -12px rgba($blue-grey-700, 0.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
+
+// Basic Type
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+}
 
 // Logbook Page
 .log {
   border-top: 8px solid $teal-600;
-  background: $background-dark;
-  color: $text-dark;
+  background: $background-light;
+  color: $text-light;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -202,6 +214,7 @@ $radius: 4px;
 // Jump Form
 .jump-form {
   background: white;
+  box-shadow: $box-shadow;
   color: $text-light;
   padding: 0.5rem;
   border-radius: $radius;
@@ -219,6 +232,7 @@ $radius: 4px;
 .jump {
   background: #fff;
   color: $text-light;
+  box-shadow: $box-shadow;
   margin-bottom: 0.25rem;
   border-radius: $radius;
   display: flex;
