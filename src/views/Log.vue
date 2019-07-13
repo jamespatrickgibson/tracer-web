@@ -55,17 +55,17 @@
     </div>
     -->
     <ol class="jumps">
-      <li v-for="(jump, n) in sortedJumps" :key="jump.jumpNumber" class="jump">
+      <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
         <p class="jump__number">{{ jump.jumpNumber }}</p>
         <div class="jump__overview">
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
           <p class="jump__location">{{ jump.location }}</p>
           <p class="jump__type">{{ jump.jumpType }}</p>
-          <p>Aircraft: {{ jump.aircraft }}</p>
-          <p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>
+          <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
+          <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <button @click="removeJump(n)">Delete Jump</button>
+          <button @click="removeJump(jump.jumpNumber)">Delete Jump</button>
         </div>
       </li>
     </ol>
@@ -147,7 +147,10 @@ export default {
     },
 
     removeJump (x) {
-      this.jumps.splice(x, 1)
+      // this.jumps.splice(x, 1)
+      this.jumps.splice(this.jumps.findIndex(function(i){
+          return i.jumpNumber === x;
+      }), 1);
       this.saveJumps()
     },
     saveJumps () {
@@ -282,6 +285,9 @@ h4 {
     font-size: 2rem;
     font-weight: bold;
     color: $blue-grey-900;
+    @include desktop {
+      flex: 0 0 6rem;
+    }
   }
   &__overview {
     padding: 1rem;
