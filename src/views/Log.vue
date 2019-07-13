@@ -3,7 +3,7 @@
     <h1>Log</h1>
     <section class="logbook">
       <ol class="jumps">
-        <li v-for="jump in logbook" :key="jump.id" class="jump">
+        <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
             <p class="jump__date">{{ jumpDate(jump.date) }}</p>
@@ -32,11 +32,19 @@ export default {
       logbook: logbookData
     }
   },
+  computed: {
+    sortedJumps () {
+      return this.logbook.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
+    }
+  },
   methods: {
     jumpDate (d) {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       const formattedDate = new Date(d).toLocaleDateString('en-US', options)
       return formattedDate
+    },
+    sortItems () {
+      // homes.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     }
   }
 }
