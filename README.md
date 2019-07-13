@@ -1,29 +1,9 @@
-# tracer
+# Tracer
 
-## Project setup
-```
-npm install
-```
+A simple, personal skydiving logbook, which uses local storate for data.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Built With
+- Vue CLI
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Authors
+- **James Patrick Gibson**
