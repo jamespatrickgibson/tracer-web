@@ -3,7 +3,11 @@
     <h1>Logbook</h1>
     <div class="jump-form">
       <h2>Add new jump</h2>
-      <p>Jump Number <input v-model.number="newJump.jumpNumber" type="number"/></p>
+      <p>
+        <label>Jump Number
+          <input v-model.number="newJump.jumpNumber" type="number"/>
+        </label>
+      </p>
       <p>
         <label>Location
           <input v-model.lazy="newJump.location"/>
@@ -14,8 +18,16 @@
           <input v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
         </label>
       </p>
-      <p>Notes <textarea v-model.lazy="newJump.notes"/></p>
-      <p>Jump Type <input v-model.lazy="newJump.jumpType"/></p>
+      <p>
+        <label>Notes
+          <textarea v-model.lazy="newJump.notes"/>
+        </label>
+      </p>
+      <p>
+        <label>Jump Type
+          <input v-model.lazy="newJump.jumpType"/>
+        </label>
+      </p>
       <button @click="addJump">Add Jump</button>
     </div>
     <!--<pre>{{ newJump }}</pre>-->
