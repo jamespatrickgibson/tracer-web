@@ -2,14 +2,14 @@
   <div class="log">
     <h1>Log</h1>
     <section class="logbook">
-      <ol>
-        <li v-for="jump in logbook" :key="jump.id">
+      <ol class="jumps">
+        <li v-for="jump in logbook" :key="jump.id" class="jump"> 
           <!--<p>{{ jump.jumpNumber }}</p>-->
           <p>{{ jumpDate(jump.date) }}</p>
           <p>Location: {{ jump.location }}</p>
           <p>Aircraft: {{ jump.aircraft }}</p>
           <p>Altitude: {{ jump.exitAltitude }}</p>
-          <p>Delay: {{ jump.freefallDelay }}</p>
+          <p>Delay: {{ jump.freefallDelay }}s</p>
           <p>Notes: {{ jump.notes }}</p>
           <p>Type: {{ jump.jumpType }}</p>
         </li>
@@ -42,3 +42,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.jumps {
+  list-style-type: none;
+  padding: 0.5rem;
+}
+.jump {
+  background: #fff;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+</style>
