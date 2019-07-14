@@ -1,0 +1,19 @@
+@mixin input {
+  background-color: $blue-grey-050;
+  border-color: transparent;
+  border-radius: $radius-small;
+}
+
+.t-input {
+  @include control;
+  @include input;
+}
+
+.t-select {
+  @include control;
+  @include input;
+}
+
+.t-textarea {
+  @include input;
+}

@@ -2,43 +2,67 @@
   <div class="log">
     <div class="jump-form">
       <h2>Add new jump</h2>
-      <p>
-        <label>Jump Number
-          <input v-model.number="newJump.jumpNumber" type="number"/>
-        </label>
-      </p>
-      <p>
-        <label>Location
-          <select v-model="newJump.location">
-            <option disabled value="">Select a Location</option>
+
+      <!-- Jump Number -->
+      <div class="field">
+        <label class="label">Jump Number</label>
+        <div class="control">
+          <input class="t-input" v-model.lazy.number="newJump.jumpNumber" type="number">
+        </div>
+        <!--<p class="help">This is a help text</p>-->
+      </div>
+
+      <!-- Location -->
+      <!-- TODO: Use this for dropzone recommendation
+      <input type="text" name="dropzones" list="dropzones" />
+      <datalist id="dropzones">
+        <option>Skydive CNY</option>
+        <option>Skydive The Ranch</option>
+        <option>Jumptown</option>
+      </datalist>
+      -->
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
+          <datalist id="dropzones">
             <option>Skydive CNY</option>
             <option>Skydive The Ranch</option>
             <option>Jumptown</option>
-          </select>
-        </label>
-      </p>
-      <p>
-        <label>Exit Altitude
-          <input v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
-        </label>
-      </p>
-      <p>
-        <label>Jump Type
-          <select v-model="newJump.jumpType">
+          </datalist>
+        </div>
+      </div>
+
+      <!-- Exit Altitude -->
+      <div class="field">
+        <label class="label">Exit Altitude</label>
+        <div class="control">
+          <input class="t-input" v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+        </div>
+      </div>
+
+      <!-- Jump Type -->
+      <div class="field">
+        <label class="label">Jump Type</label>
+        <div class="control">
+          <select class="t-select" v-model="newJump.jumpType">
             <option disabled value="">Select a Jump Type</option>
-            <option>CReW</option>
             <option>Formation Skydive</option>
             <option>Freefly</option>
-            <option>Hop and Pop</option>
             <option>Tracking</option>
+            <option>Hop and Pop</option>
+            <option>CReW</option>
             <option>Vertical Formation</option>
             <option>Wingsuit</option>
           </select>
-        </label>
-      </p>
-      <p>
-        <label>Jumper
-          <select v-model="newJump.jumpType">
+        </div>
+      </div>
+
+      <!-- Jumper Count -->
+      <div class="field">
+        <label class="label">Jumper Count</label>
+        <div class="control">
+          <select class="t-select" v-model="newJump.jumperCount">
             <option disabled value="">Jumper Count</option>
             <option>Solo</option>
             <option>2 Way</option>
@@ -50,14 +74,19 @@
             <option>8 Way</option>
             <option>9+ Way</option>
           </select>
-        </label>
-      </p>
-      <p>
-        <label>Notes
-          <textarea v-model.lazy="newJump.notes"/>
-        </label>
-      </p>
-      <button @click="addJump">Add Jump</button>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="field">
+        <label class="label">Notes</label>
+        <div class="control">
+          <textarea class="t-textarea" v-model.lazy="newJump.notes"/>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <button @click="addJump" class="t-button is-primary">Add Jump</button>
     </div>
     <!--<pre>{{ newJump }}</pre>-->
 
@@ -76,13 +105,15 @@
         <div class="jump__overview">
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
           <p class="jump__location">{{ jump.location }}</p>
-          <p class="jump__type">{{ jump.jumpType }}</p>
+          <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
           <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
           <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <button>Edit</button>
-          <button @click="removeJump(jump.jumpNumber)">Delete</button>
+          <div class="t-buttons">
+            <button class="t-button">Edit</button>
+            <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+          </div>
         </div>
       </li>
     </ol>
@@ -185,51 +216,6 @@ export default {
 </script>
 
 <style lang="scss">
-// Color
-// Primary
-$teal-050: #EFFCF6;
-$teal-100: #C6F7E2;
-$teal-200: #8EEDC7;
-$teal-300: #65D6AD;
-$teal-400: #3EBD93;
-$teal-500: #27AB83;
-$teal-600: #199473;
-$teal-700: #147D64;
-$teal-800: #0C6B58;
-$teal-900: #014D40;
-
-// Neutrals
-$blue-grey-050: #F0F4F8;
-$blue-grey-100: #D9E2EC;
-$blue-grey-200: #BCCCDC;
-$blue-grey-300: #9FB3C8;
-$blue-grey-400: #829AB1;
-$blue-grey-500: #627D98;
-$blue-grey-600: #486581;
-$blue-grey-700: #334E68;
-$blue-grey-800: #243B53;
-$blue-grey-900: #102A43;
-
-// Semantic Colors
-$text-light:  $blue-grey-800;
-$background-light: $blue-grey-050;
-
-$text-dark: $blue-grey-050;
-$background-dark: $blue-grey-900;
-$muted: $blue-grey-400;
-
-// Radii
-$radius: 6px;
-
-// Shadows
-$box-shadow: 0 30px 60px -12px rgba($blue-grey-700, 0.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
-
-// Responsive Sizes
-// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
-$tablet: 769px;
-$desktop: 960px;
-$widescreen: 1152px;
-$fullhd: 1344px;
 
 // Basic Type
 h1,
@@ -253,9 +239,6 @@ h4 {
 
 // Logbook Page
 .log {
-  border-top: 8px solid $teal-600;
-  background: $background-light;
-  color: $text-light;
   padding: 0.5rem;
 
   @include desktop() {
@@ -271,16 +254,6 @@ h4 {
   color: $text-light;
   padding: 0.5rem;
   border-radius: $radius;
-
-  label {
-    // font-size: 0.75rem;
-    font-weight: bold;
-  }
-  input,
-  select,
-  textarea {
-    font-size: 1.125rem;
-  }
 }
 // Jump List
 .jumps {

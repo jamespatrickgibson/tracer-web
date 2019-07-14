@@ -1,0 +1,12 @@
+/// Convert a given px unit to a rem unit
+/// @param {Number} $px - Number with px unit
+/// @return {Number} Number with rem unit
+@function px-rem($px) {
+  @return ($px / 16px) * 1rem;
+}
+
+/// 8pt Baseline Grid value
+/// Get the value of a specific step in a 8pt grid scale
+@function baseline-scale($step) {
+  @return (px-rem($step * 8px));
+}

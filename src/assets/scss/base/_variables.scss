@@ -1,0 +1,50 @@
+// Color
+// Primary
+$teal-050: #EFFCF6;
+$teal-100: #C6F7E2;
+$teal-200: #8EEDC7;
+$teal-300: #65D6AD;
+$teal-400: #3EBD93;
+$teal-500: #27AB83;
+$teal-600: #199473;
+$teal-700: #147D64;
+$teal-800: #0C6B58;
+$teal-900: #014D40;
+
+// Neutrals
+$blue-grey-050: #F0F4F8;
+$blue-grey-100: #D9E2EC;
+$blue-grey-200: #BCCCDC;
+$blue-grey-300: #9FB3C8;
+$blue-grey-400: #829AB1;
+$blue-grey-500: #627D98;
+$blue-grey-600: #486581;
+$blue-grey-700: #334E68;
+$blue-grey-800: #243B53;
+$blue-grey-900: #102A43;
+
+$white: #ffffff;
+
+// Semantic Colors
+$text-light:  $blue-grey-800;
+$background-light: $blue-grey-050;
+
+$text-dark: $blue-grey-050;
+$background-dark: $blue-grey-900;
+$muted: $blue-grey-400;
+
+$primary: $teal-700;
+
+// Radii
+$radius-small: 3px;
+$radius: 6px;
+
+// Shadows
+$box-shadow: 0 30px 60px -12px rgba($blue-grey-700, 0.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
+
+// Responsive Sizes
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$tablet: 769px;
+$desktop: 960px;
+$widescreen: 1152px;
+$fullhd: 1344px;
