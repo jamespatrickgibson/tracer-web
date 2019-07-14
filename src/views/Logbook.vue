@@ -1,92 +1,87 @@
 <template>
   <div class="log">
     <div class="jump-form">
-      <h2>Add new jump</h2>
-
-      <!-- Jump Number -->
-      <div class="field">
-        <label class="label">Jump Number</label>
-        <div class="control">
-          <input class="t-input" v-model.lazy.number="newJump.jumpNumber" type="number">
+      <div class="jump-form__content">
+        <h2>Add new jump</h2>
+        <!-- Jump Number -->
+        <div class="t-field">
+          <label class="t-label">Jump Number</label>
+          <div class="control">
+            <input class="t-input" v-model.lazy.number="newJump.jumpNumber" type="number">
+          </div>
+          <!--<p class="help">This is a help text</p>-->
         </div>
-        <!--<p class="help">This is a help text</p>-->
-      </div>
 
-      <!-- Location -->
-      <!-- TODO: Use this for dropzone recommendation
-      <input type="text" name="dropzones" list="dropzones" />
-      <datalist id="dropzones">
-        <option>Skydive CNY</option>
-        <option>Skydive The Ranch</option>
-        <option>Jumptown</option>
-      </datalist>
-      -->
-      <div class="field">
-        <label class="label">Location</label>
-        <div class="control">
-          <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
-          <datalist id="dropzones">
-            <option>Skydive CNY</option>
-            <option>Skydive The Ranch</option>
-            <option>Jumptown</option>
-          </datalist>
+        <!-- Location -->
+        <div class="t-field">
+          <label class="t-label">Location</label>
+          <div class="control">
+            <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
+            <datalist id="dropzones">
+              <option>Skydive CNY</option>
+              <option>Skydive The Ranch</option>
+              <option>Jumptown</option>
+            </datalist>
+          </div>
         </div>
-      </div>
 
-      <!-- Exit Altitude -->
-      <div class="field">
-        <label class="label">Exit Altitude</label>
-        <div class="control">
-          <input class="t-input" v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+        <!-- Exit Altitude -->
+        <div class="t-field">
+          <label class="t-label">Exit Altitude</label>
+          <div class="control">
+            <input class="t-input" v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+          </div>
         </div>
-      </div>
 
-      <!-- Jump Type -->
-      <div class="field">
-        <label class="label">Jump Type</label>
-        <div class="control">
-          <select class="t-select" v-model="newJump.jumpType">
-            <option disabled value="">Select a Jump Type</option>
-            <option>Formation Skydive</option>
-            <option>Freefly</option>
-            <option>Tracking</option>
-            <option>Hop and Pop</option>
-            <option>CReW</option>
-            <option>Vertical Formation</option>
-            <option>Wingsuit</option>
-          </select>
+        <!-- Jump Type -->
+        <div class="t-field">
+          <label class="t-label">Jump Type</label>
+          <div class="control">
+            <select class="t-select" v-model="newJump.jumpType">
+              <option disabled value="">Select a Jump Type</option>
+              <option>Formation Skydive</option>
+              <option>Freefly</option>
+              <option>Tracking</option>
+              <option>Hop and Pop</option>
+              <option>CReW</option>
+              <option>Vertical Formation</option>
+              <option>Wingsuit</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <!-- Jumper Count -->
-      <div class="field">
-        <label class="label">Jumper Count</label>
-        <div class="control">
-          <select class="t-select" v-model="newJump.jumperCount">
-            <option disabled value="">Jumper Count</option>
-            <option>Solo</option>
-            <option>2 Way</option>
-            <option>3 Way</option>
-            <option>4 Way</option>
-            <option>5 Way</option>
-            <option>6 Way</option>
-            <option>7 Way</option>
-            <option>8 Way</option>
-            <option>9+ Way</option>
-          </select>
+        <!-- Jumper Count -->
+        <div class="t-field">
+          <label class="t-label">Jumper Count</label>
+          <div class="control">
+            <select class="t-select" v-model="newJump.jumperCount">
+              <option disabled value="">Jumper Count</option>
+              <option>Solo</option>
+              <option>2 Way</option>
+              <option>3 Way</option>
+              <option>4 Way</option>
+              <option>5 Way</option>
+              <option>6 Way</option>
+              <option>7 Way</option>
+              <option>8 Way</option>
+              <option>9+ Way</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <!-- Notes -->
-      <div class="field">
-        <label class="label">Notes</label>
-        <div class="control">
-          <textarea class="t-textarea" v-model.lazy="newJump.notes"/>
+        <!-- Notes -->
+        <div class="t-field">
+          <label class="t-label">Notes</label>
+          <div class="control">
+            <textarea class="t-textarea" v-model.lazy="newJump.notes"/>
+          </div>
         </div>
       </div>
 
       <!-- Actions -->
-      <button @click="addJump" class="t-button is-primary">Add Jump</button>
+      <div class="jump-form__actions">
+        <button @click="addJump" class="t-button is-primary">Add Jump</button>
+      </div>
     </div>
     <!--<pre>{{ newJump }}</pre>-->
 
@@ -216,15 +211,6 @@ export default {
 </script>
 
 <style lang="scss">
-
-// Basic Type
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 400;
-}
-
 // Mixins
 @mixin mobile {
   @media screen and (max-width: $tablet - 1px) {
@@ -252,8 +238,19 @@ h4 {
   background: white;
   box-shadow: $box-shadow;
   color: $text-light;
-  padding: 0.5rem;
   border-radius: $radius;
+  overflow: hidden;
+  margin-bottom: 2rem;
+
+  &__content {
+    padding: 1rem;
+  }
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem 0.5rem;
+    background: $blue-grey-050;
+  }
 }
 // Jump List
 .jumps {
