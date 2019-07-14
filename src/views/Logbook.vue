@@ -239,9 +239,6 @@ h4 {
 
 // Logbook Page
 .log {
-  border-top: 8px solid $teal-600;
-  background: $background-light;
-  color: $text-light;
   padding: 0.5rem;
 
   @include desktop() {

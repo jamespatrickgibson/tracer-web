@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Logbook from './views/Logbook.vue'
 
 Vue.use(Router)
 
@@ -10,16 +10,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/logbook',
-      name: 'logbook',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "logbook" */ './views/Log.vue')
+      name: 'Logbook',
+      component: Logbook
     }
+    // {
+    //   path: '/logbook',
+    //   name: 'logbook',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import(/* webpackChunkName: "logbook" */ './views/Log.vue')
+    // }
   ]
 })

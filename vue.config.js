@@ -15,6 +15,7 @@ module.exports = {
       preProcessor: 'scss',
       patterns: [
         path.resolve(__dirname, './src/assets/scss/base/_variables.scss'),
+        path.resolve(__dirname, './src/assets/scss/utilities/_functions.scss'),
       ]
     }
   }
