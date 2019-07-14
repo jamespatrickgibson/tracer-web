@@ -1,6 +1,6 @@
 $control-height: 2rem;
 
-
+// Standardizes control styling across elements
 @mixin control {
   display: inline-flex;
   align-items: center;
@@ -9,4 +9,16 @@ $control-height: 2rem;
   font-size: px-rem(16px);
   line-height: baseline-scale(3);
   padding: px-rem(4px) px-rem(8px);
+
+  // States
+  &:focus,
+  &.is-focused,
+  &:active,
+  &.is-active {
+    outline: none;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+  }
 }

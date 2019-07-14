@@ -2,8 +2,30 @@
   border-radius: $radius-small;
   background: $blue-grey-100;
   @include control();
+
+  &:hover {
+    background: $blue-grey-200;
+  }
+
   &.is-primary {
     background: $primary;
     color: white;
+
+    &:hover {
+      background: $teal-800;
+    }
+  }
+}
+
+.t-buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .t-button {
+    &:not(:last-child):not(.is-fullwidth) {
+      margin-right: 0.5rem;
+    }
   }
 }

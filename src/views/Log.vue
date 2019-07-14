@@ -110,8 +110,10 @@
           <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <button class="t-button">Edit</button>
-          <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+          <div class="t-buttons">
+            <button class="t-button">Edit</button>
+            <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+          </div>
         </div>
       </li>
     </ol>
@@ -255,16 +257,6 @@ h4 {
   color: $text-light;
   padding: 0.5rem;
   border-radius: $radius;
-
-  label {
-    // font-size: 0.75rem;
-    font-weight: bold;
-  }
-  input,
-  select,
-  textarea {
-    font-size: 1.125rem;
-  }
 }
 // Jump List
 .jumps {
