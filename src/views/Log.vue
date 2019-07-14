@@ -37,7 +37,7 @@
       <div class="field">
         <label class="label">Exit Altitude</label>
         <div class="control">
-          <input v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+          <input class="t-input" v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
         </div>
       </div>
 

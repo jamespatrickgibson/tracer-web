@@ -1,0 +1,12 @@
+$control-height: 2rem;
+
+
+@mixin control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: $control-height;
+  font-size: px-rem(16px);
+  line-height: baseline-scale(3);
+  padding: px-rem(4px) px-rem(8px);
+}
