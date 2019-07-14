@@ -1,8 +1,12 @@
 <template>
   <div class="log">
+
+    <!-- Jump Form -->
     <div class="jump-form">
+      <div class="jump-form__header">
+        <h2 class="t-title-3">Add Jump</h2>
+      </div>
       <div class="jump-form__content">
-        <h2>Add new jump</h2>
         <!-- Jump Number -->
         <div class="t-field">
           <label class="t-label">Jump Number</label>
@@ -83,48 +87,27 @@
         <button @click="addJump" class="t-button is-primary">Add Jump</button>
       </div>
     </div>
-    <!--<pre>{{ newJump }}</pre>-->
 
-    <h2>All Jumps</h2>
-    <!--
-    <div class="jump-list" v-for="(jump, n) in jumps" :key="jump.name">
-      <p>
-        <span><pre>{{ jump }}</pre></span>
-        <button @click="removeJump(n)">Delete Jump</button>
-      </p>
-    </div>
-    -->
-    <ol class="jumps">
-      <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
-        <p class="jump__number">{{ jump.jumpNumber }}</p>
-        <div class="jump__overview">
-          <p class="jump__date">{{ jumpDate(jump.date) }}</p>
-          <p class="jump__location">{{ jump.location }}</p>
-          <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
-          <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
-          <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
-          <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
-          <!--<p>Notes: {{ jump.notes }}</p>-->
-          <div class="t-buttons">
-            <button class="t-button">Edit</button>
-            <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
-          </div>
-        </div>
-      </li>
-    </ol>
-
-    <section class="logbook" v-show="false">
+    <!-- All Jumps -->
+    <section class="all-jumps">
+      <h2 class="t-large-title is-bold">All Jumps</h2>
       <ol class="jumps">
-        <li v-for="jump in logbook" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
-            <p class="jump__date">{{ jumpDate(jump.date) }}</p>
-            <p>Location: {{ jump.location }}</p>
-            <p>Aircraft: {{ jump.aircraft }}</p>
-            <p>Altitude: {{ jump.exitAltitude }}</p>
+            <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
+            <p class="jump__location">{{ jump.location }}</p>
+            <p class="jump__date t-subhead">{{ jumpDate(jump.date) }}</p>
+            <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
+            <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
             <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
             <!--<p>Notes: {{ jump.notes }}</p>-->
-            <p>Type: {{ jump.jumpType }}</p>
+            <!--
+            <div class="t-buttons">
+              <button class="t-button">Edit</button>
+              <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+            </div>
+            -->
           </div>
         </li>
       </ol>
@@ -225,8 +208,6 @@ export default {
 
 // Logbook Page
 .log {
-  padding: 0.5rem;
-
   @include desktop() {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -241,7 +222,11 @@ export default {
   border-radius: $radius;
   overflow: hidden;
   margin-bottom: 2rem;
-
+  &__header {
+    padding: 1rem 1rem (1rem - px-rem(1px)) 1rem;
+    color: $blue-grey-900;
+    border-bottom: px-rem(1px) solid transparent;
+  }
   &__content {
     padding: 1rem;
   }
@@ -249,7 +234,16 @@ export default {
     display: flex;
     justify-content: flex-end;
     padding: 0.75rem 0.5rem;
-    background: $blue-grey-050;
+    background: hsl(210, 37.2%, 97%);
+  }
+}
+
+// All Jumps
+.all-jumps {
+  .t-large-title {
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
 }
 // Jump List
@@ -260,9 +254,10 @@ export default {
 .jump {
   background: #fff;
   color: $text-light;
-  box-shadow: $box-shadow;
-  margin-bottom: 0.25rem;
-  border-radius: $radius;
+  // box-shadow: $box-shadow;
+  // margin-bottom: 0.25rem;
+  // border-radius: $radius;
+  border-bottom: px-rem(1px) solid $blue-grey-100;
   display: flex;
 
   &__number {
@@ -281,19 +276,17 @@ export default {
     padding: 1rem;
   }
   &__date {
-    font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
     color: $muted;
   }
   &__location {
     font-size: 0.875rem;
+    margin-bottom: 0.25rem;
   }
   &__type {
     font-size: 1.25rem;
-  }
-  p {
-    margin: 0;
+    margin-bottom: 0.25rem;
   }
 }
 </style>

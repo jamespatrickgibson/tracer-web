@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <header class="app-header">Tracer</header>
+    <header class="app-header">
+      <h1 class="t-title-3 is-bold">Jumps</h1>
+    </header>
     <router-view/>
   </div>
 </template>
@@ -9,9 +11,5 @@
 .app-header {
   background: $white;
   padding: 0.5rem;
-  font-size: px-rem(24px);
-  font-weight: 400;
-  text-transform: lowercase;
-  letter-spacing: -0.04em;
 }
 </style>

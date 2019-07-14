@@ -1,0 +1,47 @@
+.t-large-title {
+  font-weight: normal;
+  font-size: px-rem(22px);
+  letter-spacing: -0.01em;
+  &.is-bold {
+    font-weight: bold;
+  }
+}
+.t-title-1 {
+  font-size: px-rem(19px);
+  font-weight: 500;
+}
+.t-title-2 {
+  font-size: px-rem(17px);
+  font-weight: normal;
+  font-weight: 500;
+}
+.t-title-3 {
+  font-size: px-rem(16px);
+  font-weight: 500;
+  line-height: baseline-scale(3);
+  &.is-bold {
+    font-weight: bold;
+  }
+}
+.t-headline {
+  font-size: px-rem(17px);
+  font-weight: 500;
+}
+.t-body {
+  font-size: px-rem(17px);
+}
+.t-callout {
+  font-size: px-rem(16px);
+}
+.t-subhead {
+  font-size: px-rem(11px);
+}
+.t-footnote {
+  font-size: px-rem(13px);
+}
+.t-caption-1 {
+  font-size: px-rem(12px);
+}
+.t-caption-2 {
+  font-size: px-rem(11px);
+}
