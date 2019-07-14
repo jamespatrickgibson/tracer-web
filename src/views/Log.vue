@@ -37,6 +37,22 @@
         </label>
       </p>
       <p>
+        <label>Jumper
+          <select v-model="newJump.jumpType">
+            <option disabled value="">Jumper Count</option>
+            <option>Solo</option>
+            <option>2 Way</option>
+            <option>3 Way</option>
+            <option>4 Way</option>
+            <option>5 Way</option>
+            <option>6 Way</option>
+            <option>7 Way</option>
+            <option>8 Way</option>
+            <option>9+ Way</option>
+          </select>
+        </label>
+      </p>
+      <p>
         <label>Notes
           <textarea v-model.lazy="newJump.notes"/>
         </label>
@@ -65,7 +81,8 @@
           <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <button @click="removeJump(jump.jumpNumber)">Delete Jump</button>
+          <button>Edit</button>
+          <button @click="removeJump(jump.jumpNumber)">Delete</button>
         </div>
       </li>
     </ol>
@@ -107,6 +124,7 @@ export default {
         location: '',
         exitAltitude: 10000,
         notes: null,
+        jumperCount: '',
         jumpType: ''
       }
     }
@@ -141,16 +159,16 @@ export default {
         location: null,
         exitAltitude: 10000,
         notes: null,
+        jumperCount: '',
         jumpType: null
       }
       this.saveJumps()
     },
 
     removeJump (x) {
-      // this.jumps.splice(x, 1)
-      this.jumps.splice(this.jumps.findIndex(function(i){
-          return i.jumpNumber === x;
-      }), 1);
+      this.jumps.splice(this.jumps.findIndex(function (i) {
+        return i.jumpNumber === x
+      }), 1)
       this.saveJumps()
     },
     saveJumps () {
