@@ -1,4 +1,4 @@
-# Tracer
+# 📓Tracer
 Work in progress.
 
 A simple, personal skydiving logbook, which uses local storate for data.
@@ -8,3 +8,4 @@ A simple, personal skydiving logbook, which uses local storate for data.
 
 ## Author
 - **James Patrick Gibson** @negativespaceio
+
