@@ -2,43 +2,69 @@
   <div class="log">
     <div class="jump-form">
       <h2>Add new jump</h2>
-      <p>
-        <label>Jump Number
-          <input v-model.number="newJump.jumpNumber" type="number"/>
-        </label>
-      </p>
-      <p>
-        <label>Location
-          <select v-model="newJump.location">
-            <option disabled value="">Select a Location</option>
+
+      <!-- Jump Number -->
+      <div class="field">
+        <label class="label">Jump Number</label>
+        <div class="control">
+          <input class="input" v-model.lazy.number="newJump.jumpNumber" type="number">
+        </div>
+        <!--<p class="help">This is a help text</p>-->
+      </div>
+
+      <!-- Location -->
+      <!-- TODO: Use this for dropzone recommendation
+      <input type="text" name="dropzones" list="dropzones" />
+      <datalist id="dropzones">
+        <option>Skydive CNY</option>
+        <option>Skydive The Ranch</option>
+        <option>Jumptown</option>
+      </datalist>
+      -->
+      <div class="field">
+        <label class="label">Location</label>
+        <div class="control">
+          <input class="input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
+          <datalist id="dropzones">
             <option>Skydive CNY</option>
             <option>Skydive The Ranch</option>
             <option>Jumptown</option>
-          </select>
-        </label>
-      </p>
-      <p>
-        <label>Exit Altitude
+          </datalist>
+        </div>
+      </div>
+
+
+      <!-- Exit Altitude -->
+      <div class="field">
+        <label class="label">Exit Altitude</label>
+        <div class="control">
           <input v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
-        </label>
-      </p>
-      <p>
-        <label>Jump Type
+        </div>
+      </div>
+
+      <!-- Jump Type -->
+      <div class="field">
+        <label class="label">Jump Type</label>
+        <div class="control">
           <select v-model="newJump.jumpType">
             <option disabled value="">Select a Jump Type</option>
-            <option>CReW</option>
             <option>Formation Skydive</option>
             <option>Freefly</option>
-            <option>Hop and Pop</option>
             <option>Tracking</option>
+            <option>Hop and Pop</option>
+            <option>CReW</option>
             <option>Vertical Formation</option>
             <option>Wingsuit</option>
           </select>
-        </label>
-      </p>
-      <p>
-        <label>Jumper
-          <select v-model="newJump.jumpType">
+        </div>
+      </div>
+
+
+      <!-- Jumper Count -->
+      <div class="field">
+        <label class="label">Jumper Count</label>
+        <div class="control">
+          <select v-model="newJump.jumperCount">
             <option disabled value="">Jumper Count</option>
             <option>Solo</option>
             <option>2 Way</option>
@@ -50,13 +76,18 @@
             <option>8 Way</option>
             <option>9+ Way</option>
           </select>
-        </label>
-      </p>
-      <p>
-        <label>Notes
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="field">
+        <label class="label">Notes</label>
+        <div class="control">
           <textarea v-model.lazy="newJump.notes"/>
-        </label>
-      </p>
+        </div>
+      </div>
+
+      <!-- Actions -->
       <button @click="addJump">Add Jump</button>
     </div>
     <!--<pre>{{ newJump }}</pre>-->
@@ -76,7 +107,7 @@
         <div class="jump__overview">
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
           <p class="jump__location">{{ jump.location }}</p>
-          <p class="jump__type">{{ jump.jumpType }}</p>
+          <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
           <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
           <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
