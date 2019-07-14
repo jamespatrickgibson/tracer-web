@@ -7,7 +7,7 @@
       <div class="field">
         <label class="label">Jump Number</label>
         <div class="control">
-          <input class="input" v-model.lazy.number="newJump.jumpNumber" type="number">
+          <input class="t-input" v-model.lazy.number="newJump.jumpNumber" type="number">
         </div>
         <!--<p class="help">This is a help text</p>-->
       </div>
@@ -24,7 +24,7 @@
       <div class="field">
         <label class="label">Location</label>
         <div class="control">
-          <input class="input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
+          <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
           <datalist id="dropzones">
             <option>Skydive CNY</option>
             <option>Skydive The Ranch</option>
@@ -32,7 +32,6 @@
           </datalist>
         </div>
       </div>
-
 
       <!-- Exit Altitude -->
       <div class="field">
@@ -46,7 +45,7 @@
       <div class="field">
         <label class="label">Jump Type</label>
         <div class="control">
-          <select v-model="newJump.jumpType">
+          <select class="t-select" v-model="newJump.jumpType">
             <option disabled value="">Select a Jump Type</option>
             <option>Formation Skydive</option>
             <option>Freefly</option>
@@ -59,12 +58,11 @@
         </div>
       </div>
 
-
       <!-- Jumper Count -->
       <div class="field">
         <label class="label">Jumper Count</label>
         <div class="control">
-          <select v-model="newJump.jumperCount">
+          <select class="t-select" v-model="newJump.jumperCount">
             <option disabled value="">Jumper Count</option>
             <option>Solo</option>
             <option>2 Way</option>
@@ -83,12 +81,12 @@
       <div class="field">
         <label class="label">Notes</label>
         <div class="control">
-          <textarea v-model.lazy="newJump.notes"/>
+          <textarea class="t-textarea" v-model.lazy="newJump.notes"/>
         </div>
       </div>
 
       <!-- Actions -->
-      <button @click="addJump">Add Jump</button>
+      <button @click="addJump" class="t-button is-primary">Add Jump</button>
     </div>
     <!--<pre>{{ newJump }}</pre>-->
 
@@ -112,8 +110,8 @@
           <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
           <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
           <!--<p>Notes: {{ jump.notes }}</p>-->
-          <button>Edit</button>
-          <button @click="removeJump(jump.jumpNumber)">Delete</button>
+          <button class="t-button">Edit</button>
+          <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
         </div>
       </li>
     </ol>
@@ -216,51 +214,6 @@ export default {
 </script>
 
 <style lang="scss">
-// Color
-// Primary
-$teal-050: #EFFCF6;
-$teal-100: #C6F7E2;
-$teal-200: #8EEDC7;
-$teal-300: #65D6AD;
-$teal-400: #3EBD93;
-$teal-500: #27AB83;
-$teal-600: #199473;
-$teal-700: #147D64;
-$teal-800: #0C6B58;
-$teal-900: #014D40;
-
-// Neutrals
-$blue-grey-050: #F0F4F8;
-$blue-grey-100: #D9E2EC;
-$blue-grey-200: #BCCCDC;
-$blue-grey-300: #9FB3C8;
-$blue-grey-400: #829AB1;
-$blue-grey-500: #627D98;
-$blue-grey-600: #486581;
-$blue-grey-700: #334E68;
-$blue-grey-800: #243B53;
-$blue-grey-900: #102A43;
-
-// Semantic Colors
-$text-light:  $blue-grey-800;
-$background-light: $blue-grey-050;
-
-$text-dark: $blue-grey-050;
-$background-dark: $blue-grey-900;
-$muted: $blue-grey-400;
-
-// Radii
-$radius: 6px;
-
-// Shadows
-$box-shadow: 0 30px 60px -12px rgba($blue-grey-700, 0.25),0 18px 36px -18px rgba(0,0,0,.3),0 -12px 36px -8px rgba(0,0,0,.025);
-
-// Responsive Sizes
-// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
-$tablet: 769px;
-$desktop: 960px;
-$widescreen: 1152px;
-$fullhd: 1344px;
 
 // Basic Type
 h1,

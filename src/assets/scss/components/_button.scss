@@ -1,0 +1,8 @@
+.t-button {
+  border-radius: $radius-small;
+  background: $blue-grey-100;
+  &.is-primary {
+    background: $primary;
+    color: white;
+  }
+}
