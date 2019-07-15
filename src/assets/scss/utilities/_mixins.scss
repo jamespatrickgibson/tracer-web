@@ -81,8 +81,11 @@
 
 // Captions and Small Text
 @mixin caption-1 {
-  font-size: px-rem(12px);
+  font-size: px-rem(13px);
+  font-weight: bold;
 }
 @mixin caption-2 {
   font-size: px-rem(11px);
+  font-weight: bold;
+  letter-spacing: 0.06em;
 }

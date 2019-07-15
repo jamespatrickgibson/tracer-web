@@ -87,17 +87,19 @@ export default {
 .jump {
   background: #fff;
   color: $text-light;
-  border-bottom: px-rem(1px) solid $blue-grey-100;
+  border-bottom: px-rem(2px) solid $blue-grey-050;
   display: flex;
 
   &__number {
     display: flex;
     justify-content: center;
-    align-self: center;
-    flex: 0 0 20%;
-    font-size: 2rem;
+    align-self: stretch;
+    align-items: center;
+    flex: 0 0 5rem;
+    font-size: px-rem(28px);
     font-weight: bold;
-    color: $blue-grey-900;
+    color: $blue-grey-700;
+    background: $blue-grey-025;
     @include desktop {
       flex: 0 0 6rem;
     }
@@ -111,11 +113,14 @@ export default {
   &__location {
     @include subhead;
     color: $muted;
+    font-weight: bold;
     margin-bottom: $space-s;
   }
   &__date {
-    @include subhead();
-    color: $muted;
+    @include caption-2();
+    color: $blue-grey-500;
+    margin-bottom: $space-xs;
+    text-transform: uppercase;
   }
 }
 </style>
