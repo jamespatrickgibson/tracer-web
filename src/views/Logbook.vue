@@ -13,12 +13,10 @@
             <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
             <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
             <!--<p>Notes: {{ jump.notes }}</p>-->
-            <!--
             <div class="t-buttons">
-              <button class="t-button">Edit</button>
-              <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+
+              <button class="t-button" @click="deleteJump(jump.id)">Delete</button>
             </div>
-            -->
           </div>
         </li>
       </ol>
@@ -27,52 +25,23 @@
 </template>
 
 <script>
-// Generated from Mockaroo
-// https://mockaroo.com/schemas/116940
-import logbookData from '@/data/sample-logbook-data.json'
-
 export default {
   name: 'log',
-  data () {
-    return {
-      logbook: logbookData,
-      newJump: {
-        id: null,
-        jumpNumber: null,
-        date: new Date().toISOString(),
-        location: '',
-        exitAltitude: 10000,
-        notes: null,
-        jumperCount: '',
-        jumpType: ''
-      }
-    }
-  },
-  mounted () {
-    if (localStorage.getItem('jumps')) {
-      try {
-        let jumpData = JSON.parse(localStorage.getItem('jumps'))
-        this.jumps = jumpData
-      } catch (e) {
-        localStorage.removeItem('jumps')
-      }
-    }
-  },
   computed: {
     jumps () {
       return this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
-    },
-    sortedJumps () {
-      return this.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
     }
   },
   methods: {
-    removeJump (x) {
+    deleteJump (id) {
+      this.$store.commit('deleteJump', id)
+      /*
       this.jumps.splice(this.jumps.findIndex(function (i) {
         return i.jumpNumber === x
       }), 1)
       // confirm('Jump Successfully Deleted');
       this.saveJumps()
+      */
     },
     jumpDate (d) {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }

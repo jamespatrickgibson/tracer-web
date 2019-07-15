@@ -1,5 +1,6 @@
 <template>
   <section class="add-jump">
+    <pre>{{ jumpData }}</pre>
     <div class="jump-form">
       <div class="jump-form__header">
         <h2 class="t-title-3">Add Jump</h2>
@@ -9,7 +10,7 @@
         <div class="t-field">
           <label class="t-label">Jump Number</label>
           <div class="control">
-            <input class="t-input" v-model.lazy.number="newJump.jumpNumber" type="number">
+            <input class="t-input" v-model.lazy.number="jumpData.jumpNumber" type="number">
           </div>
           <!--<p class="help">This is a help text</p>-->
         </div>
@@ -18,7 +19,7 @@
         <div class="t-field">
           <label class="t-label">Location</label>
           <div class="control">
-            <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="newJump.location"/>
+            <input class="t-input" type="text" name="dropzones" list="dropzones" v-model="jumpData.location"/>
             <datalist id="dropzones">
               <option>Skydive CNY</option>
               <option>Skydive The Ranch</option>
@@ -31,7 +32,7 @@
         <div class="t-field">
           <label class="t-label">Exit Altitude</label>
           <div class="control">
-            <input class="t-input" v-model.lazy="newJump.exitAltitude" type="number" min="1500" max="15000"/>
+            <input class="t-input" v-model.lazy="jumpData.exitAltitude" type="number" min="1500" max="15000"/>
           </div>
         </div>
 
@@ -39,7 +40,7 @@
         <div class="t-field">
           <label class="t-label">Jump Type</label>
           <div class="control">
-            <select class="t-select" v-model="newJump.jumpType">
+            <select class="t-select" v-model="jumpData.jumpType">
               <option disabled value="">Select a Jump Type</option>
               <option>Formation Skydive</option>
               <option>Freefly</option>
@@ -56,7 +57,7 @@
         <div class="t-field">
           <label class="t-label">Jumper Count</label>
           <div class="control">
-            <select class="t-select" v-model="newJump.jumperCount">
+            <select class="t-select" v-model="jumpData.jumperCount">
               <option disabled value="">Jumper Count</option>
               <option>Solo</option>
               <option>2 Way</option>
@@ -75,7 +76,7 @@
         <div class="t-field">
           <label class="t-label">Notes</label>
           <div class="control">
-            <textarea class="t-textarea" v-model.lazy="newJump.notes"/>
+            <textarea class="t-textarea" v-model.lazy="jumpData.notes"/>
           </div>
         </div>
       </div>
@@ -91,8 +92,7 @@ export default {
   name: 'add-jump',
   data () {
     return {
-      jumps: [],
-      newJump: {
+      jumpData: {
         id: null,
         jumpNumber: null,
         date: new Date().toISOString(),
@@ -104,31 +104,21 @@ export default {
       }
     }
   },
+  mounted () {
+    let lastJump = this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))[0]
+    this.jumpData.id = lastJump.id + 1
+    this.jumpData.jumpNumber = lastJump.jumpNumber + 1
+    this.jumpData.location = lastJump.location
+    this.jumpData.exitAltitude = lastJump.exitAltitude
+    this.jumpData.notes = lastJump.notes
+    this.jumpData.jumperCount = lastJump.jumperCount
+    this.jumpData.jumpType = lastJump.jumpType
+  },
   methods: {
     addJump () {
-      // Ensure that something is typed
-      if (!this.newJump) {
-        return
-      }
-
-      this.jumps.push(this.newJump)
-      this.newJump = {
-        id: null,
-        jumpNumber: '',
-        date: new Date().toISOString(),
-        location: null,
-        exitAltitude: 10000,
-        notes: null,
-        jumperCount: '',
-        jumpType: null
-      }
-      this.saveJumps()
+      this.$store.commit('addJump', this.jumpData)
       this.$router.push({ path: '/' })
-    },
-    saveJumps () {
-      const parsed = JSON.stringify(this.jumps)
-      localStorage.setItem('jumps', parsed)
-    },
+    }
   }
 }
 </script>

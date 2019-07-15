@@ -18,7 +18,16 @@ export default new Vuex.Store({
         )
       }
     },
+    addJump (state, jumpData) {
+      state.jumps.push(jumpData)
+    },
+    deleteJump (state, id) {
+      state.jumps.splice(state.jumps.findIndex(function (i) {
+        return i.id === id
+      }), 1)
+    },
     loadSampleData (state) {
+      state.jumps = []
       state.jumps = logbookData
     },
     clearLogbook (state) {
@@ -29,9 +38,3 @@ export default new Vuex.Store({
 
   }
 })
-
-// Subscribe to store updates
-// store.subscribe((mutation, state) => {
-//   // Store the state object as a JSON string
-//   localStorage.setItem('store', JSON.stringify(state))
-// })
