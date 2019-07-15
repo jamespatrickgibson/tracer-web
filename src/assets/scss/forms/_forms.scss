@@ -1,12 +1,17 @@
 @mixin input {
+  -webkit-appearance: none;
   background-color: $blue-grey-050;
-  border-color: transparent;
+  border: px-rem(1px) solid $blue-grey-100;
+  box-shadow: none;
+  outline: none;
   border-radius: $radius-small;
+  font-weight: 500;
 }
 
 .t-input {
   @include control;
   @include input;
+  width: 100%;
 }
 
 .t-select {
@@ -16,13 +21,15 @@
 
 .t-textarea {
   @include input;
+  box-shadow: none;
+  padding: $space-s;
 }
 
 // Labels
 .t-label {
   display: block;
   font-size: px-rem(14px);
-  font-weight: 500;
+  font-weight: bold;
   &:not(:last-child) {
     margin-bottom: 0.5rem;
   }

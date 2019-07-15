@@ -21,9 +21,15 @@ body {
   margin: 0;
   padding-top: 3.75rem;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  background: $background-light;
+  background: $blue-grey-050;
   color: $text-light;
   -webkit-text-size-adjust: 100%;
+}
+@supports(padding: max(0px)) {
+  body {
+      padding-top: max(1rem, 3.75rem + env(safe-area-inset-top));
+      min-height: 100vh;
+  }
 }
 
 

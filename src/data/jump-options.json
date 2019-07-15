@@ -1,0 +1,22 @@
+{
+  "jumpTypeOptions": [
+    { "text": "Formation Skydive", "value": "fs" },
+    { "text": "Freefly", "value": "ff" },
+    { "text": "Tracking", "value": "tr" },
+    { "text": "Hop and Pop", "value": "hp" },
+    { "text": "CReW", "value": "cr" },
+    { "text": "Vertical Formation", "value": "vfs" },
+    { "text": "Wingsuit", "value": "ws" }
+  ],
+  "jumperCountOptions": [
+    { "text": "Solo", "value": 1 },
+    { "text": "2 Way", "value": 2 },
+    { "text": "3 Way", "value": 3 },
+    { "text": "4 Way", "value": 4 },
+    { "text": "5 Way", "value": 5 },
+    { "text": "6 Way", "value": 6 },
+    { "text": "7 Way", "value": 7 },
+    { "text": "8 Way", "value": 8 },
+    { "text": "9+ Way", "value": 9 }
+  ]
+}

@@ -1,4 +1,4 @@
-$control-height: 2rem;
+$control-height: baseline-scale(5);
 
 // Standardizes control styling across elements
 @mixin control {
@@ -7,8 +7,9 @@ $control-height: 2rem;
   justify-content: flex-start;
   height: $control-height;
   font-size: px-rem(16px);
-  line-height: baseline-scale(3);
-  padding: px-rem(4px) px-rem(8px);
+  line-height: $control-height;
+  // padding: $space-s;
+  padding: 0 $space-s;
 
   // States
   &:focus,

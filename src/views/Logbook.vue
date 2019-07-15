@@ -3,20 +3,19 @@
     <!-- All Jumps -->
     <section class="all-jumps">
       <ol class="jumps">
-        <li v-for="jump in logbook" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in jumps" :key="jump.id" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
-            <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
+            <p class="jump__type"><span class="jump__jumper-count">{{ jumperCountName(jump.jumperCount) }}</span> {{ jumpTypeName(jump.jumpType) }}</p>
             <p class="jump__location">{{ jump.location }}</p>
-            <p class="jump__date t-subhead">{{ jumpDate(jump.date) }}</p>
-            <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
+            <p class="jump__date">{{ jumpDate(jump.date) }}</p>
+            <!--<p>Aircraft: {{ jump.aircraft }}</p> -->
             <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
             <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
             <!--<p>Notes: {{ jump.notes }}</p>-->
             <!--
             <div class="t-buttons">
-              <button class="t-button">Edit</button>
-              <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
+              <button class="t-button" @click="deleteJump(jump.id)">Delete</button>
             </div>
             -->
           </div>
@@ -27,102 +26,48 @@
 </template>
 
 <script>
-// Generated from Mockaroo
-// https://mockaroo.com/schemas/116940
-import logbookData from '@/data/Logbook.json'
+import jumpOptionsData from '@/data/jump-options.json'
 
 export default {
   name: 'log',
   data () {
     return {
-      logbook: logbookData,
-      jumps: [],
-      newJump: {
-        id: null,
-        jumpNumber: null,
-        date: new Date().toISOString(),
-        location: '',
-        exitAltitude: 10000,
-        notes: null,
-        jumperCount: '',
-        jumpType: ''
-      }
-    }
-  },
-  mounted () {
-    if (localStorage.getItem('jumps')) {
-      try {
-        let jumpData = JSON.parse(localStorage.getItem('jumps'))
-        this.jumps = jumpData
-      } catch (e) {
-        localStorage.removeItem('jumps')
-      }
-    }
-  },
-  computed: {
-    sortedJumps () {
-      return this.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
+      jumpTypeOptions: jumpOptionsData.jumpTypeOptions,
+      jumperCountOptions: jumpOptionsData.jumperCountOptions
     }
   },
   methods: {
-    removeJump (x) {
-      this.jumps.splice(this.jumps.findIndex(function (i) {
-        return i.jumpNumber === x
-      }), 1)
-      // confirm('Jump Successfully Deleted');
-      this.saveJumps()
+    deleteJump (id) {
+      this.$store.commit('deleteJump', id)
     },
     jumpDate (d) {
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
       const formattedDate = new Date(d).toLocaleDateString('en-US', options)
       return formattedDate
+    },
+    jumperCountName (count) {
+      let name = this.jumperCountOptions.find(o => o.value === count).text
+      return name
+    },
+    jumpTypeName (value) {
+      let name = this.jumpTypeOptions.find(o => o.value === value).text
+      return name
+    }
+  },
+  computed: {
+    jumps () {
+      return this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
     }
   }
 }
 </script>
 
 <style lang="scss">
-// Mixins
-@mixin mobile {
-  @media screen and (max-width: $tablet - 1px) {
-    @content;
-  }
-}
-@mixin desktop {
-  @media screen and (min-width: $desktop) {
-    @content;
-  }
-}
-
 // Logbook Page
 .log {
   @include desktop() {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
-}
-
-// Jump Form
-.jump-form {
-  background: white;
-  box-shadow: $box-shadow;
-  color: $text-light;
-  border-radius: $radius;
-  overflow: hidden;
-  margin-bottom: 2rem;
-  &__header {
-    padding: 1rem 1rem (1rem - px-rem(1px)) 1rem;
-    color: $blue-grey-900;
-    border-bottom: px-rem(1px) solid transparent;
-  }
-  &__content {
-    padding: 1rem;
-  }
-  &__actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.75rem 0.5rem;
-    background: hsl(210, 37.2%, 97%);
   }
 }
 
@@ -142,39 +87,40 @@ export default {
 .jump {
   background: #fff;
   color: $text-light;
-  // box-shadow: $box-shadow;
-  // margin-bottom: 0.25rem;
-  // border-radius: $radius;
-  border-bottom: px-rem(1px) solid $blue-grey-100;
+  border-bottom: px-rem(2px) solid $blue-grey-050;
   display: flex;
 
   &__number {
     display: flex;
     justify-content: center;
-    align-self: center;
-    flex: 0 0 20%;
-    font-size: 2rem;
+    align-self: stretch;
+    align-items: center;
+    flex: 0 0 5rem;
+    font-size: px-rem(28px);
     font-weight: bold;
-    color: $blue-grey-900;
+    color: $blue-grey-700;
+    background: $blue-grey-025;
     @include desktop {
       flex: 0 0 6rem;
     }
   }
   &__overview {
-    padding: 1rem;
-  }
-  &__date {
-    font-weight: bold;
-    text-transform: uppercase;
-    color: $muted;
-  }
-  &__location {
-    font-size: 0.875rem;
-    margin-bottom: 0.25rem;
+    padding: $space-s;
   }
   &__type {
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
+    @include title-2;
+  }
+  &__location {
+    @include subhead;
+    color: $muted;
+    font-weight: bold;
+    margin-bottom: $space-s;
+  }
+  &__date {
+    @include caption-2();
+    color: $blue-grey-500;
+    margin-bottom: $space-xs;
+    text-transform: uppercase;
   }
 }
 </style>

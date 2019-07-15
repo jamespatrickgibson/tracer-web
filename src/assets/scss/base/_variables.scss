@@ -12,6 +12,7 @@ $teal-800: #0C6B58;
 $teal-900: #014D40;
 
 // Neutrals
+$blue-grey-025: hsl(210, 37.2%, 98%);
 $blue-grey-050: #F0F4F8;
 $blue-grey-100: #D9E2EC;
 $blue-grey-200: #BCCCDC;
@@ -36,6 +37,27 @@ $muted: $blue-grey-400;
 $primary: $teal-700;
 
 $border-color: $blue-grey-200;
+
+
+// Spacing
+//
+// Sizes based off the 8pt grid
+//
+//  xxs     2px     0.125rem
+//  xs      4px     0.125rem
+//  s       8px     0.5rem
+//  m       16px    1rem
+//  l       32px    2rem
+//  xl      64px    4rem
+
+$space-xxs: 0.125rem;
+$space-xs: 0.25rem;
+$space-s: 0.5rem;
+$space-m: 1rem;
+$space-l: 2rem;
+$space-xl: 4rem;
+$space-xxl: 8rem;
+
 
 // Radii
 $radius-small: 3px;

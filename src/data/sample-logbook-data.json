@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "jumpNumber": 1,
+    "date": "2017-02-09T10:49:34Z",
+    "location": "Skydive the Ranch",
+    "aircraft": "Twin Otter",
+    "exitAltitude": 13500,
+    "deploymentAltitude": 4500,
+    "freefallTime": 50,
+    "cutaway": false,
+    "jumperCount": 1,
+    "jumpType": "ws",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "jumpNumber": 2,
+    "date": "2017-02-09T10:50:34Z",
+    "location": "Skydive the Ranch",
+    "aircraft": "Twin Otter",
+    "exitAltitude": 13500,
+    "deploymentAltitude": 4500,
+    "freefallTime": 40,
+    "cutaway": false,
+    "jumperCount": 2,
+    "jumpType": "fs",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "jumpNumber": 3,
+    "date": "2017-02-09T10:50:34Z",
+    "location": "Skydive CNY",
+    "aircraft": "Cessna 172",
+    "exitAltitude": 10000,
+    "deploymentAltitude": 4500,
+    "freefallTime": 40,
+    "cutaway": false,
+    "jumperCount": 3,
+    "jumpType": "ff",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "jumpNumber": 4,
+    "date": "2017-02-09T10:50:34Z",
+    "location": "Skydive CNY",
+    "aircraft": "Cessna 172",
+    "exitAltitude": 5000,
+    "deploymentAltitude": 4000,
+    "freefallTime": 5,
+    "cutaway": false,
+    "jumperCount": 1,
+    "jumpType": "hp",
+    "notes": ""
+  }
+]

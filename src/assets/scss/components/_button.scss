@@ -6,10 +6,10 @@ $button-padding-horizontal: 0.75em;
   border-radius: $radius-small;
   background: $blue-grey-100;
   @include control();
-  font-size: px-rem(13px);
-  font-weight: 500;
+  font-size: px-rem(14px);
+  font-weight: bold;
   padding: $button-padding-vertical $button-padding-horizontal;
-
+  line-height: 1em;
   &:hover {
     background: $blue-grey-200;
   }
@@ -21,6 +21,9 @@ $button-padding-horizontal: 0.75em;
     &:hover {
       background: $teal-300;
     }
+  }
+  &.is-fullwidth {
+    width: 100%;
   }
 }
 

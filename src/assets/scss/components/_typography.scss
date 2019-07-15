@@ -1,47 +1,45 @@
+
+
 .t-large-title {
-  font-weight: normal;
-  font-size: px-rem(22px);
-  letter-spacing: -0.01em;
+  @include large-title;
   &.is-bold {
     font-weight: bold;
   }
 }
 .t-title-1 {
-  font-size: px-rem(19px);
-  font-weight: 500;
+  @include title-1;
 }
 .t-title-2 {
-  font-size: px-rem(17px);
-  font-weight: normal;
-  font-weight: 500;
+  @include title-2;
 }
 .t-title-3 {
-  font-size: px-rem(16px);
-  font-weight: 500;
-  line-height: baseline-scale(3);
+  @include title-3;
   &.is-bold {
     font-weight: bold;
   }
 }
 .t-headline {
-  font-size: px-rem(17px);
-  font-weight: 500;
+ @include headline;
 }
 .t-body {
-  font-size: px-rem(17px);
+  @include body;
 }
 .t-callout {
-  font-size: px-rem(16px);
+  @include callout
 }
+
 .t-subhead {
-  font-size: px-rem(11px);
+ @include subhead;
 }
+
 .t-footnote {
-  font-size: px-rem(13px);
+  @include footnote;
 }
+
+// Captions
 .t-caption-1 {
-  font-size: px-rem(12px);
+  @include caption-1;
 }
 .t-caption-2 {
-  font-size: px-rem(11px);
+  @include caption-2;
 }
