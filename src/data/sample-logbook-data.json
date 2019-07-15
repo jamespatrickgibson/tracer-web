@@ -9,8 +9,9 @@
     "deploymentAltitude": 4500,
     "freefallTime": 50,
     "cutaway": false,
-    "notes": "",
-    "jumpType": "Formation Skydiving"
+    "jumperCount": 1,
+    "jumpType": "fs",
+    "notes": ""
   },
   {
     "id": 2,
@@ -22,8 +23,9 @@
     "deploymentAltitude": 4500,
     "freefallTime": 40,
     "cutaway": false,
-    "notes": "",
-    "jumpType": "Formation Skydiving"
+    "jumperCount": 2,
+    "jumpType": "fs",
+    "notes": ""
   },
   {
     "id": 3,
@@ -35,8 +37,9 @@
     "deploymentAltitude": 4500,
     "freefallTime": 40,
     "cutaway": false,
-    "notes": "",
-    "jumpType": "Freefly"
+    "jumperCount": 3,
+    "jumpType": "ff",
+    "notes": ""
   },
   {
     "id": 4,
@@ -48,7 +51,8 @@
     "deploymentAltitude": 4000,
     "freefallTime": 5,
     "cutaway": false,
-    "notes": "",
-    "jumpType": "Hop and Pop"
+    "jumperCount": 1,
+    "jumpType": "hp",
+    "notes": ""
   }
 ]
