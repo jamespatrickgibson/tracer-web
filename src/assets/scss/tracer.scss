@@ -19,10 +19,11 @@
 
 body {
   margin: 0;
+  padding-top: 3.75rem;
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  // border-top: 8px solid $teal-600;
   background: $background-light;
   color: $text-light;
+  -webkit-text-size-adjust: 100%;
 }
 
 

@@ -102,12 +102,12 @@
             <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
             <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
             <!--<p>Notes: {{ jump.notes }}</p>-->
-            <!--
+            <!--            -->
             <div class="t-buttons">
               <button class="t-button">Edit</button>
               <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
             </div>
-            -->
+
           </div>
         </li>
       </ol>
@@ -178,6 +178,7 @@ export default {
       this.jumps.splice(this.jumps.findIndex(function (i) {
         return i.jumpNumber === x
       }), 1)
+      // confirm('Jump Successfully Deleted');
       this.saveJumps()
     },
     saveJumps () {
