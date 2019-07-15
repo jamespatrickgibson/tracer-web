@@ -2,9 +2,8 @@
   <div class="log">
     <!-- All Jumps -->
     <section class="all-jumps">
-      <h2 class="t-large-title is-bold">All Jumps</h2>
       <ol class="jumps">
-        <li v-for="jump in sortedJumps" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in logbook" :key="jump.jumpNumber" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
             <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
@@ -14,12 +13,12 @@
             <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
             <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
             <!--<p>Notes: {{ jump.notes }}</p>-->
-            <!--            -->
+            <!--
             <div class="t-buttons">
               <button class="t-button">Edit</button>
               <button class="t-button" @click="removeJump(jump.jumpNumber)">Delete</button>
             </div>
-
+            -->
           </div>
         </li>
       </ol>

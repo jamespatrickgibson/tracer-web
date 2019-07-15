@@ -7,10 +7,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
+  linkExactActiveClass: 'is-active',
   routes: [
     {
       path: '/',
-      name: 'Logbook',
+      name: 'All Jumps',
       component: Logbook
     },
     {

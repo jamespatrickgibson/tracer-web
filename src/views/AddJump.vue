@@ -1,6 +1,5 @@
 <template>
   <section class="add-jump">
-    <h1 class="t-title-large">Add Jump</h1>
     <div class="jump-form">
       <div class="jump-form__header">
         <h2 class="t-title-3">Add Jump</h2>
@@ -133,3 +132,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.add-jump {
+  min-height: 100vh;
+}
+</style>
