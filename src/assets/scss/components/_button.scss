@@ -25,6 +25,10 @@ $button-padding-horizontal: 0.75em;
   &.is-fullwidth {
     width: 100%;
   }
+  &.has-icon {
+    padding-left: $space-xs;
+    padding-right: $space-m;
+  }
 }
 
 .t-buttons {
