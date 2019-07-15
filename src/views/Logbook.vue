@@ -6,7 +6,7 @@
         <li v-for="jump in jumps" :key="jump.id" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
-            <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
+            <p class="jump__type"><span class="jump__jumper-count">{{ jumperCountName(jump.jumperCount) }}</span> {{ jumpTypeName(jump.jumpType) }}</p>
             <p class="jump__location">{{ jump.location }}</p>
             <p class="jump__date t-subhead">{{ jumpDate(jump.date) }}</p>
             <!-- <p>Aircraft: {{ jump.aircraft }}</p> -->
@@ -25,28 +25,37 @@
 </template>
 
 <script>
+import jumpOptionsData from '@/data/jump-options.json'
+
 export default {
   name: 'log',
-  computed: {
-    jumps () {
-      return this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
+  data () {
+    return {
+      jumpTypeOptions: jumpOptionsData.jumpTypeOptions,
+      jumperCountOptions: jumpOptionsData.jumperCountOptions
     }
   },
   methods: {
     deleteJump (id) {
       this.$store.commit('deleteJump', id)
-      /*
-      this.jumps.splice(this.jumps.findIndex(function (i) {
-        return i.jumpNumber === x
-      }), 1)
-      // confirm('Jump Successfully Deleted');
-      this.saveJumps()
-      */
     },
     jumpDate (d) {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       const formattedDate = new Date(d).toLocaleDateString('en-US', options)
       return formattedDate
+    },
+    jumperCountName (count) {
+      let name = this.jumperCountOptions.find(o => o.value === count).text
+      return name
+    },
+    jumpTypeName (value) {
+      let name = this.jumpTypeOptions.find(o => o.value === value).text
+      return name
+    }
+  },
+  computed: {
+    jumps () {
+      return this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
     }
   }
 }

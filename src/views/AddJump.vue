@@ -1,6 +1,5 @@
 <template>
   <section class="add-jump">
-    <pre>{{ jumpData }}</pre>
     <div class="jump-form">
       <div class="jump-form__header">
         <h2 class="t-title-3">Add Jump</h2>
@@ -45,18 +44,6 @@
                 {{ option.text }}
               </option>
             </select>
-            <!--
-            <select class="t-select" v-model="jumpData.jumpType">
-              <option disabled value="">Select a Jump Type</option>
-              <option>Formation Skydive</option>
-              <option>Freefly</option>
-              <option>Tracking</option>
-              <option>Hop and Pop</option>
-              <option>CReW</option>
-              <option>Vertical Formation</option>
-              <option>Wingsuit</option>
-            </select>
-            -->
           </div>
         </div>
 
@@ -88,10 +75,14 @@
 </template>
 
 <script>
+import jumpOptionsData from '@/data/jump-options.json'
+
 export default {
   name: 'add-jump',
   data () {
     return {
+      jumpTypeOptions: jumpOptionsData.jumpTypeOptions,
+      jumperCountOptions: jumpOptionsData.jumperCountOptions,
       jumpData: {
         id: 1,
         jumpNumber: 1,
@@ -105,27 +96,7 @@ export default {
         jumperCount: 1,
         jumpType: 'fs',
         notes: null
-      },
-      jumpTypeOptions: [
-        { text: 'Formation Skydive', value: "fs" },
-        { text: 'Freefly', value: "ff" },
-        { text: 'Tracking', value: "tr" },
-        { text: 'Hop and Pop', value: "hp" },
-        { text: 'CReW', value: "cr" },
-        { text: 'Vertical Formation', value: "vfs" },
-        { text: 'Wingsuit', value: "ws" }
-      ],
-      jumperCountOptions: [
-        { text: 'Solo',   value: "1" },
-        { text: '2 Way',  value: "2" },
-        { text: '3 Way',  value: "3" },
-        { text: '4 Way',  value: "4" },
-        { text: '5 Way',  value: "5" },
-        { text: '6 Way',  value: "6" },
-        { text: '7 Way',  value: "7" },
-        { text: '8 Way',  value: "8" },
-        { text: '9+ Way', value: "9" }
-      ]
+      }
     }
   },
   mounted () {
