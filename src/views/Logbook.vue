@@ -1,9 +1,11 @@
 <template>
   <div class="log">
+    <button class="t-button" @click="loadSampleData()">Load Sample Data</button>
+    <button class="t-button" @click="clearLogbook()">Clear All Data</button>
     <!-- All Jumps -->
     <section class="all-jumps">
       <ol class="jumps">
-        <li v-for="jump in logbook" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in jumps" :key="jump.jumpNumber" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
             <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
@@ -29,7 +31,7 @@
 <script>
 // Generated from Mockaroo
 // https://mockaroo.com/schemas/116940
-import logbookData from '@/data/Logbook.json'
+import logbookData from '@/data/sample-logbook-data.json'
 
 export default {
   name: 'log',
@@ -65,6 +67,27 @@ export default {
     }
   },
   methods: {
+    loadSampleData () {
+      const parsed = JSON.stringify(this.logbook)
+      localStorage.setItem('jumps', parsed)
+      if (localStorage.getItem('jumps')) {
+        try {
+          let jumpData = JSON.parse(localStorage.getItem('jumps'))
+          this.jumps = jumpData
+        } catch (e) {
+          localStorage.removeItem('jumps')
+        }
+      }
+    },
+    clearLogbook () {
+      var clearLogbookConfirmation = confirm('Are you sure you want to clear your logbook? This cannot be undone!')
+      if (clearLogbookConfirmation === true) {
+        localStorage.removeItem('jumps')
+        this.jumps = []
+      } else {
+        return false
+      }
+    },
     removeJump (x) {
       this.jumps.splice(this.jumps.findIndex(function (i) {
         return i.jumpNumber === x
