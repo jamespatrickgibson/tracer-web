@@ -19,14 +19,17 @@ export default {
   },
   methods: {
     loadSampleData () {
-      const parsed = JSON.stringify(this.logbook)
-      localStorage.setItem('jumps', parsed)
-      alert('Sample data successfully loaded')
+      var loadSampleConfirm = confirm('Loading sample data will clear your current logbook data. Are you sure you want to load?')
+      if (loadSampleConfirm === true) {
+        this.$store.commit('loadSampleData')
+      } else {
+        return false
+      }
     },
     clearLogbook () {
       var clearLogbookConfirmation = confirm('Are you sure you want to clear your logbook? This cannot be undone.')
       if (clearLogbookConfirmation === true) {
-        localStorage.removeItem('jumps')
+        this.$store.commit('clearLogbook')
       } else {
         return false
       }

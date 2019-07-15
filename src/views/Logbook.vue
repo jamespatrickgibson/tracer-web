@@ -3,7 +3,7 @@
     <!-- All Jumps -->
     <section class="all-jumps">
       <ol class="jumps">
-        <li v-for="jump in jumps" :key="jump.jumpNumber" class="jump">
+        <li v-for="jump in jumps" :key="jump.id" class="jump">
           <p class="jump__number">{{ jump.jumpNumber }}</p>
           <div class="jump__overview">
             <p class="jump__type"><span class="jump__jumper-count">{{ jump.jumperCount }}</span> {{ jump.jumpType }}</p>
@@ -36,7 +36,6 @@ export default {
   data () {
     return {
       logbook: logbookData,
-      jumps: [],
       newJump: {
         id: null,
         jumpNumber: null,
@@ -60,6 +59,9 @@ export default {
     }
   },
   computed: {
+    jumps () {
+      return this.$store.state.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
+    },
     sortedJumps () {
       return this.jumps.slice(0).sort((b, a) => parseFloat(a.jumpNumber) - parseFloat(b.jumpNumber))
     }
