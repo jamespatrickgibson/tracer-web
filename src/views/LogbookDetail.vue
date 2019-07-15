@@ -4,13 +4,39 @@
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="M15 18l-6-6 6-6"/></svg>
       Back
     </router-link>
-    <h1 class="t-large-title">Solo Wingsuit</h1>
+    <h1 class="t-large-title">{{ jumperCountName(jump.jumperCount) }} {{ jumpTypeName(jump.jumpType) }}</h1>
+
+    <pre>{{ jump }}</pre>
   </section>
 </template>
 
 <script>
+import jumpOptionsData from '@/data/jump-options.json'
 export default {
-  name: 'logbook-detail'
+  name: 'logbook-detail',
+  data () {
+    return {
+      jumpData: this.$store.state.jumps,
+      jumpTypeOptions: jumpOptionsData.jumpTypeOptions,
+      jumperCountOptions: jumpOptionsData.jumperCountOptions
+    }
+  },
+  methods: {
+    jumperCountName (count) {
+      let name = this.jumperCountOptions.find(o => o.value === count).text
+      return name
+    },
+    jumpTypeName (value) {
+      let name = this.jumpTypeOptions.find(o => o.value === value).text
+      return name
+    }
+  },
+  computed: {
+    jump () {
+      let number = Number(this.$route.params.jumpNumber)
+      return this.jumpData.find(o => o.jumpNumber === number)
+    }
+  }
 }
 </script>
 

@@ -11,7 +11,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
       component: Logbook,
       children: [
         {
@@ -20,7 +19,7 @@ export default new Router({
           component: () => import(/* webpackChunkName: "jumps" */ './views/LogbookJumps.vue')
         },
         {
-          path: '/jumps/detail',
+          path: '/jumps/:jumpNumber',
           name: 'Jump Detail',
           component: () => import(/* webpackChunkName: "jump-detail" */ './views/LogbookDetail.vue')
         }

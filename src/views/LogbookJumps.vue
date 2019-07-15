@@ -2,7 +2,7 @@
   <section class="logbook-jumps">
     <!-- All Jumps -->
     <ol class="jumps">
-      <router-link v-for="jump in jumps" :key="jump.id" class="jump" to="/jumps/detail" tag="li">
+      <router-link v-for="jump in jumps" :key="jump.id" class="jump" :to="'/jumps/' + jump.jumpNumber" tag="li">
         <p class="jump__number">{{ jump.jumpNumber }}</p>
         <div class="jump__overview">
           <p class="jump__type"><span class="jump__jumper-count">{{ jumperCountName(jump.jumperCount) }}</span> {{ jumpTypeName(jump.jumpType) }}</p>
