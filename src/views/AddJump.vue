@@ -129,4 +129,27 @@ export default {
   min-height: 100vh;
   padding: 1rem;
 }
+// Jump Form
+.jump-form {
+  background: $white;
+  box-shadow: $box-shadow;
+  color: $text-light;
+  border-radius: $radius;
+  overflow: hidden;
+  margin-bottom: $space-l;
+  &__header {
+    padding: $space-m $space-m ($space-m - px-rem(1px)) $space-m;
+    color: $blue-grey-900;
+    border-bottom: px-rem(1px) solid transparent;
+  }
+  &__content {
+    padding: $space-m;
+  }
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: $space-m;
+    background: hsl(210, 37.2%, 97%);
+  }
+}
 </style>

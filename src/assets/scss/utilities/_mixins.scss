@@ -1,0 +1,88 @@
+// Responsive Design, Media Queries
+//
+@mixin mobile {
+  @media screen and (max-width: $tablet - 1px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
+
+
+// Typography
+/*
+  TYPE SCALE VALUES:
+  1     0.75rem      12px
+  2     0.875rem     14px
+  3     1rem         16px
+  4     1.125rem     18px
+  5     1.25rem      20px
+  6     1.5rem       24px
+  7     1.75rem      28px
+  8     2rem         32px
+  9     2.25rem      36px
+  10    2.625rem     42px
+  11    3rem         48px
+  12    3.375rem     54px
+  13    3.75rem      60px
+  14    4.25rem      68px
+  15    4.75rem      76px
+  16    5.25rem      84px
+  17    5.75rem      92px
+*/
+
+// Large Title
+// Typically used for a strong page header in iOS
+@mixin large-title {
+  font-weight: normal;
+  font-size: px-rem(22px);
+  letter-spacing: -0.01em;
+}
+
+// Title
+// Used for normal sized page headers, and section titles
+@mixin title-1 {
+  font-size: px-rem(19px);
+  font-weight: 500;
+}
+@mixin title-2 {
+  font-size: px-rem(17px);
+  font-weight: bold;
+  line-height: baseline-scale(3);
+}
+@mixin title-3 {
+  font-size: px-rem(16px);
+  font-weight: 500;
+  line-height: baseline-scale(3);
+}
+
+// Content Styling
+@mixin headline {
+  font-size: px-rem(17px);
+  font-weight: 500;
+}
+@mixin body {
+  font-size: px-rem(17px);
+}
+@mixin callout {
+  font-size: px-rem(16px);
+}
+@mixin subhead {
+  font-size: px-rem(14px);
+  font-weight: 500;
+  line-height: baseline-scale(2);
+}
+@mixin footnote {
+  font-size: px-rem(13px);
+}
+
+// Captions and Small Text
+@mixin caption-1 {
+  font-size: px-rem(12px);
+}
+@mixin caption-2 {
+  font-size: px-rem(11px);
+}
