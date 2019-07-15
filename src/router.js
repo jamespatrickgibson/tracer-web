@@ -11,8 +11,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'All Jumps',
-      component: Logbook
+      name: 'Home',
+      component: Logbook,
+      children: [
+        {
+          path: '/',
+          name: 'Jumps',
+          component: () => import(/* webpackChunkName: "jumps" */ './views/LogbookJumps.vue')
+        },
+        {
+          path: '/jumps/detail',
+          name: 'Jump Detail',
+          component: () => import(/* webpackChunkName: "jump-detail" */ './views/LogbookDetail.vue')
+        }
+      ]
     },
     {
       path: '/add-jump',
