@@ -17,3 +17,21 @@
 .t-textarea {
   @include input;
 }
+
+// Labels
+.t-label {
+  display: block;
+  font-size: px-rem(14px);
+  font-weight: 500;
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+// Containers
+.t-field {
+  &:not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+}

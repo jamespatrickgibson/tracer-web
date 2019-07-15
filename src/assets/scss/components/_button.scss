@@ -1,18 +1,25 @@
+$button-border-width: px-rem(1px);
+$button-padding-vertical: calc(0.375em - #{$button-border-width});
+$button-padding-horizontal: 0.75em;
+
 .t-button {
   border-radius: $radius-small;
   background: $blue-grey-100;
   @include control();
+  font-size: px-rem(13px);
+  font-weight: 500;
+  padding: $button-padding-vertical $button-padding-horizontal;
 
   &:hover {
     background: $blue-grey-200;
   }
 
   &.is-primary {
-    background: $primary;
-    color: white;
+    background: $teal-200;
+    color: $teal-900;
 
     &:hover {
-      background: $teal-800;
+      background: $teal-300;
     }
   }
 }
