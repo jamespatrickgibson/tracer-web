@@ -127,5 +127,6 @@ export default {
 <style lang="scss">
 .add-jump {
   min-height: 100vh;
+  padding: 1rem;
 }
 </style>

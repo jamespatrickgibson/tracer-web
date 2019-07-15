@@ -37,6 +37,26 @@ $primary: $teal-700;
 
 $border-color: $blue-grey-200;
 
+
+// Spacing
+//
+// Sizes based off the 8pt grid
+//
+//  xxs     2px     0.125rem
+//  s       8px     0.5rem
+//  m       16px    1rem
+//  l       32px    2rem
+//  xl      64px    4rem
+
+$space-xxs: 0.125rem;
+$space-xs: 0.25rem;
+$space-s: 0.5rem;
+$space-m: 1rem;
+$space-l: 2rem;
+$space-xl: 4rem;
+$space-xxl: 8rem;
+
+
 // Radii
 $radius-small: 3px;
 $radius: 6px;
