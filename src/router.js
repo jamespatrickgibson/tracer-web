@@ -12,14 +12,14 @@ export default new Router({
       path: '/',
       name: 'Logbook',
       component: Logbook
+    },
+    {
+      path: '/add-jump',
+      name: 'Add Jump',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "addjump" */ './views/AddJump.vue')
     }
-    // {
-    //   path: '/logbook',
-    //   name: 'logbook',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "logbook" */ './views/Log.vue')
-    // }
   ]
 })
