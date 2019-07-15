@@ -10,7 +10,7 @@
     "freefallTime": 50,
     "cutaway": false,
     "jumperCount": 1,
-    "jumpType": "fs",
+    "jumpType": "ws",
     "notes": ""
   },
   {
