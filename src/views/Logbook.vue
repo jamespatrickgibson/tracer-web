@@ -1,7 +1,5 @@
 <template>
   <div class="log">
-    <button class="t-button" @click="loadSampleData()">Load Sample Data</button>
-    <button class="t-button" @click="clearLogbook()">Clear All Data</button>
     <!-- All Jumps -->
     <section class="all-jumps">
       <ol class="jumps">
@@ -67,27 +65,6 @@ export default {
     }
   },
   methods: {
-    loadSampleData () {
-      const parsed = JSON.stringify(this.logbook)
-      localStorage.setItem('jumps', parsed)
-      if (localStorage.getItem('jumps')) {
-        try {
-          let jumpData = JSON.parse(localStorage.getItem('jumps'))
-          this.jumps = jumpData
-        } catch (e) {
-          localStorage.removeItem('jumps')
-        }
-      }
-    },
-    clearLogbook () {
-      var clearLogbookConfirmation = confirm('Are you sure you want to clear your logbook? This cannot be undone!')
-      if (clearLogbookConfirmation === true) {
-        localStorage.removeItem('jumps')
-        this.jumps = []
-      } else {
-        return false
-      }
-    },
     removeJump (x) {
       this.jumps.splice(this.jumps.findIndex(function (i) {
         return i.jumpNumber === x
