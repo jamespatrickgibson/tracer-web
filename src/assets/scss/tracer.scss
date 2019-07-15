@@ -25,6 +25,12 @@ body {
   color: $text-light;
   -webkit-text-size-adjust: 100%;
 }
+@supports(padding: max(0px)) {
+  body {
+      padding-top: max(1rem, 3.75rem + env(safe-area-inset-top));
+      min-height: 100vh;
+  }
+}
 
 
 // Basic Type
