@@ -67,11 +67,10 @@ export default {
   padding: 0;
 }
 .jump {
-  background: #fff;
   color: $text-light;
-  border-bottom: px-rem(2px) solid $blue-grey-050;
   display: flex;
   cursor: pointer;
+  padding: $space-xs;
 
   &__number {
     display: flex;
@@ -81,17 +80,22 @@ export default {
     flex: 0 0 5rem;
     font-size: px-rem(28px);
     font-weight: bold;
-    color: $blue-grey-700;
-    background: $blue-grey-025;
+    color: $grey-050;
+    background: $grey-900;
+    border-radius: $radius;
     @include desktop {
       flex: 0 0 6rem;
     }
   }
   &__overview {
-    padding: $space-s;
+    padding-bottom: $space-s;
+    border-bottom: px-rem(1px) solid $grey-700;
+    flex: 1 0 auto;
+    margin-left: $space-s;
   }
   &__type {
     @include title-2;
+    color: $white;
   }
   &__location {
     @include subhead;
@@ -101,7 +105,7 @@ export default {
   }
   &__date {
     @include caption-2();
-    color: $blue-grey-500;
+    color: $grey-600;
     margin-bottom: $space-xs;
     text-transform: uppercase;
   }

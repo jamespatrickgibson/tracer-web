@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <header class="app-header">
-      <h1 v-if="this.$route.path === '/'" class="t-large-title is-bold">{{ this.$route.name }}</h1>
+      <h1 v-if="this.$route.path === '/'" class="t-large-title">{{ this.$route.name }}</h1>
       <div v-else>
-        <h1 class="t-large-title is-bold"> {{ this.$route.name }}</h1>
+        <h1 class="t-large-title"> {{ this.$route.name }}</h1>
       </div>
       <div class="app-header__actions"></div>
     </header>
@@ -24,7 +24,7 @@
 
 <style lang="scss">
 .app-header {
-  background: $primary;
+  background: $grey-700;
   color: $white;
   padding: 0.75rem;
   position: fixed;
@@ -34,6 +34,7 @@
   display: flex;
   align-items: center;
   z-index: 10;
+  // border-bottom: px-rem(1px) solid $grey-900;
   &__actions {
     margin-left: auto;
   }
@@ -53,21 +54,22 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: $white;
-  border-top: 1px solid $blue-grey-100;
+  background: $grey-800;
+  // border-top: 1px solid $grey-800;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
   .t-button {
     height: 2.5rem;
     background: transparent;
+    color: $white;
     &:active,
     &:hover {
       background: transparent;
     }
   }
   .t-button.is-active {
-    color: $teal-400;
+    color: $teal-500;
   }
 }
 @supports(padding: max(0px)) {

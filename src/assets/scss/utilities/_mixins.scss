@@ -37,7 +37,7 @@
 // Large Title
 // Typically used for a strong page header in iOS
 @mixin large-title {
-  font-weight: normal;
+  font-weight: 400;
   font-size: px-rem(22px);
   letter-spacing: -0.01em;
 }
