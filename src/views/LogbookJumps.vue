@@ -35,9 +35,6 @@ export default {
     }
   },
   methods: {
-    deleteJump (id) {
-      this.$store.commit('deleteJump', id)
-    },
     jumpDate (d) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       const formattedDate = new Date(d).toLocaleDateString('en-US', options)

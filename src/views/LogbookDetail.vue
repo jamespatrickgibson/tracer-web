@@ -5,7 +5,7 @@
       Back
     </router-link>
     <h1 class="t-large-title">{{ jumperCountName(jump.jumperCount) }} {{ jumpTypeName(jump.jumpType) }}</h1>
-
+    <button class="t-button" @click="deleteJump()">Delete</button>
     <pre>{{ jump }}</pre>
   </section>
 </template>
@@ -22,6 +22,15 @@ export default {
     }
   },
   methods: {
+    deleteJump (id) {
+      var deleteJumpConfirm = confirm('Are you sure you want to delete this jump? This action cannot be undone.')
+      if (deleteJumpConfirm === true) {
+        this.$store.commit('deleteJump', id)
+        this.$router.push({ path: '/' })
+      } else {
+        return false
+      }
+    },
     jumperCountName (count) {
       let name = this.jumperCountOptions.find(o => o.value === count).text
       return name
