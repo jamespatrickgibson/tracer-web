@@ -1,10 +1,12 @@
 <template>
   <div class="add-jump-sheet" :class="{'is-active': isActive}">
-    <button class="t-button has-icon is-tertiary" @click="closeJumpSheet()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="M15 18l-6-6 6-6"/></svg>
-      Back
-    </button>
-    <button class="t-button" @click="addJump()">Add Jump</button>
+    <header class="add-jump-sheet__header">
+      <button class="t-button has-icon is-tertiary" @click="closeJumpSheet()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="M15 18l-6-6 6-6"/></svg>
+        Back
+      </button>
+      <button class="t-button is-secondary" @click="addJump()">Add Jump</button>
+    </header>
     <div class="jump-form">
       <div class="jump-form__header">
         <h2 class="t-title-3">Add Jump</h2>
@@ -71,9 +73,6 @@
             <textarea class="t-textarea" v-model.lazy="jumpData.notes"/>
           </div>
         </div>
-      </div>
-      <div class="jump-form__actions">
-        <button @click="addJump" class="t-button is-primary">Add Jump</button>
       </div>
     </div>
   </div>
@@ -149,12 +148,17 @@ export default {
   // background: $grey-600;
   // color: $white;
   z-index: 20;
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 120%, 0);
   transition: transform 0.25s $ease-in-out;
-  // transition: transform 0.2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
-  // transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   &.is-active {
     transform: translate3d(0, 0, 0);
+  }
+
+  &__header {
+    min-height: max(3rem, 5rem + env(safe-area-inset-top));
+    padding-top: max(1rem, env(safe-area-inset-top));
+    background: $grey-750;
+    color: $white;
   }
 }
 

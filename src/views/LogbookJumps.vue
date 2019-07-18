@@ -8,15 +8,6 @@
           <p class="jump__type"><span class="jump__jumper-count">{{ jumperCountName(jump.jumperCount) }}</span> {{ jumpTypeName(jump.jumpType) }}</p>
           <p class="jump__location">{{ jump.location }}</p>
           <p class="jump__date">{{ jumpDate(jump.date) }}</p>
-          <!--<p>Aircraft: {{ jump.aircraft }}</p> -->
-          <!--<p>Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>-->
-          <!--<p>Delay: {{ jump.freefallDelay }}s</p>-->
-          <!--<p>Notes: {{ jump.notes }}</p>-->
-          <!--
-          <div class="t-buttons">
-            <button class="t-button" @click="deleteJump(jump.id)">Delete</button>
-          </div>
-          -->
         </div>
       </router-link>
     </ol>
@@ -58,40 +49,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.logbook-jumps {
-
-}
 // Jump List
 .jumps {
   list-style-type: none;
-  padding: 0;
+  padding: $space-s;
 }
 .jump {
   color: $text-light;
   display: flex;
   cursor: pointer;
-  padding: $space-xs;
+  padding: $space-xs 0;
 
   &__number {
     display: flex;
     justify-content: center;
-    align-self: stretch;
     align-items: center;
-    flex: 0 0 5rem;
+    flex: 0 0 3.5rem;
     font-size: px-rem(28px);
     font-weight: bold;
-    color: $grey-050;
-    background: $grey-900;
+    color: $grey-500;
+    background: $grey-700;
     border-radius: $radius;
+    margin-bottom: $space-xs;
     @include desktop {
       flex: 0 0 6rem;
     }
   }
   &__overview {
-    padding-bottom: $space-s;
     border-bottom: px-rem(1px) solid $grey-700;
     flex: 1 0 auto;
-    margin-left: $space-s;
+    margin-left: $space-m;
   }
   &__type {
     @include title-2;
@@ -100,7 +87,6 @@ export default {
   &__location {
     @include subhead;
     color: $muted;
-    font-weight: bold;
     margin-bottom: $space-s;
   }
   &__date {
@@ -108,6 +94,7 @@ export default {
     color: $grey-600;
     margin-bottom: $space-xs;
     text-transform: uppercase;
+    display: none;
   }
 }
 </style>

@@ -25,6 +25,7 @@ $blue-grey-800: #243B53;
 $blue-grey-900: #102A43;
 
 $grey-050: hsl(0, 0%, 92.2%);
+$grey-500: hsl(216, 5%, 50%);
 $grey-600: hsl(216, 5%, 40%);
 $grey-700: hsl(217.6, 13.1%, 19.5%);
 $grey-750: hsl(217.6, 13.1%, 16%);
@@ -85,3 +86,12 @@ $ease-in: cubic-bezier(0.42, 0, 1, 1);
 $ease-out: cubic-bezier(0, 0, 0.58, 1);
 $ease-in-out: cubic-bezier(0.42, 0, 0.45, 1);
 $ease-default:  cubic-bezier(0.25, 0.1, 0.25, 1);
+
+// App Specific Variables
+$app-nav-bar-mobile-height: 2.75rem;
+$app-nav-title-mobile-height: 2.8125rem;
+
+$app-tab-bar-mobile-height: 3.125rem;
+
+$app-padding-mobile-top: calc(5.5625rem + env(safe-area-inset-top));
+$app-padding-mobile-bottom: calc(3.125rem + env(safe-area-inset-bottom));

@@ -1,12 +1,19 @@
 <template>
   <section class="logbook-detail">
-    <router-link to="/" tag="button" class="t-button has-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="bevel"><path d="M15 18l-6-6 6-6"/></svg>
-      Back
-    </router-link>
-    <h1 class="t-large-title">{{ jumperCountName(jump.jumperCount) }} {{ jumpTypeName(jump.jumpType) }}</h1>
-    <button class="t-button" @click="deleteJump()">Delete</button>
-    <pre>{{ jump }}</pre>
+    <div class="logbook-detail__content">
+      <p>Jump {{ jump.jumpNumber }}</p>
+      <h1 class="t-large-title">{{ jumperCountName(jump.jumperCount) }} {{ jumpTypeName(jump.jumpType) }}</h1>
+      <p class="jump__date">{{ jumpDate(jump.date) }}</p>
+      <hr>
+      <p>Aircraft: {{ jump.aircraft }}</p>
+      <p>Location: {{ jump.location }}</p>
+      <p>Exit Altitude: {{ jump.exitAltitude.toLocaleString() }}</p>
+      <p>Deployment Altitude: {{ jump.deploymentAltitude.toLocaleString() }}</p>
+      <p>Delay: {{ jump.freefallTime }}s</p>
+      <p v-if="jump.cutaway">Cutaway!</p>
+      <p>Notes: {{ jump.notes }}</p>
+      <button class="t-button is-tertiary" @click="deleteJump()">Delete</button>
+    </div>
   </section>
 </template>
 
@@ -38,6 +45,11 @@ export default {
     jumpTypeName (value) {
       let name = this.jumpTypeOptions.find(o => o.value === value).text
       return name
+    },
+    jumpDate (d) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' }
+      const formattedDate = new Date(d).toLocaleDateString('en-US', options)
+      return formattedDate
     }
   },
   computed: {
@@ -51,8 +63,13 @@ export default {
 
 <style lang="scss" scoped>
 .logbook-detail {
-  height: 100vh;
-  padding: $space-m;
+  padding-top: $app-padding-mobile-top;
+  padding-bottom: $app-padding-mobile-bottom;
+  color: $white;
+
+  &__content {
+    padding: ($space-m + $space-xs);
+  }
   .t-button.has-icon {
     line-height: 1.5;
     margin-bottom: $space-l;

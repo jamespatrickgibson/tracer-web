@@ -3,13 +3,14 @@ $button-padding-vertical: calc(0.375em - #{$button-border-width});
 $button-padding-horizontal: 0.75em;
 
 .t-button {
-  border-radius: $radius-small;
+  border-radius: $radius;
   background: $blue-grey-100;
   @include control();
-  font-size: px-rem(14px);
-  font-weight: bold;
+  font-size: px-rem(18px);
+  font-weight: normal;
   padding: $button-padding-vertical $button-padding-horizontal;
   line-height: 1em;
+  border: $button-border-width solid $blue-grey-100;
   &:hover {
     background: $blue-grey-200;
   }
@@ -22,8 +23,13 @@ $button-padding-horizontal: 0.75em;
       background: $teal-300;
     }
   }
+  &.is-secondary {
+    background: transparent;
+    border-color: $blue-grey-100;
+  }
   &.is-tertiary {
     background: transparent;
+    border-color: transparent;
   }
   &.is-fullwidth {
     width: 100%;
