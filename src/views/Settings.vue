@@ -1,9 +1,9 @@
 <template>
   <section class="settings">
-  <div class="t-buttons">
-    <button class="t-button is-fullwidth" @click="loadSampleData()">Load Sample Data</button>
-    <button class="t-button is-fullwidth" @click="clearLogbook()">Clear All Data</button>
-  </div>
+    <div class="t-buttons">
+      <button class="t-button is-fullwidth is-secondary" @click="loadSampleData()">Load Sample Data</button>
+      <button class="t-button is-fullwidth is-secondary" @click="clearLogbook()">Clear All Data</button>
+    </div>
   </section>
 </template>
 
@@ -40,10 +40,15 @@ export default {
 
 <style lang="scss" scoped>
 .settings {
-  padding: 0.5rem;
+  padding-top: $app-padding-mobile-top;
+  padding-bottom: $app-padding-mobile-bottom;
 
   .t-button:not(:last-child) {
     margin-bottom: 0.5rem;
+  }
+  .t-buttons {
+    padding: ($space-m + $space-xs);
+    color: $white;
   }
 }
 </style>

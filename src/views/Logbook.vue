@@ -30,17 +30,13 @@ export default {
 
 <style lang="scss">
 // Logbook Page
-.log {
-  @include desktop() {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-}
 .child-view {
   position: absolute;
-  transition: all .5s cubic-bezier(.55,0,.1,1);
+  transition: all .3s $ease-in-out;
   z-index: 0;
   width: 100vw;
+  padding-top: $app-padding-mobile-top;
+  padding-bottom: $app-padding-mobile-bottom;
 }
 .slide-left-enter, .slide-right-leave-active {
   opacity: 0;

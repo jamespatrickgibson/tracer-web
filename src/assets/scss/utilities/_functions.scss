@@ -7,6 +7,8 @@
 
 /// 8pt Baseline Grid value
 /// Get the value of a specific step in a 8pt grid scale
+/// @param {Number} $step – The multiplier to create scale
+/// @return {Number} – A rem value, converted from pixels/points
 @function baseline-scale($step) {
   @return (px-rem($step * 8px));
 }

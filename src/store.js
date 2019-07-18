@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    jumps: []
+    jumps: [],
+    jumpSheetIsActive: false
   },
   mutations: {
     initialiseStore (state) {
@@ -32,6 +33,12 @@ export default new Vuex.Store({
     },
     clearLogbook (state) {
       state.jumps = []
+    },
+    closeJumpSheet (state) {
+      state.jumpSheetIsActive = false
+    },
+    openJumpSheet (state) {
+      state.jumpSheetIsActive = true
     }
   },
   actions: {
