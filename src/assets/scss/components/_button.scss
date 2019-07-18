@@ -22,6 +22,9 @@ $button-padding-horizontal: 0.75em;
       background: $teal-300;
     }
   }
+  &.is-tertiary {
+    background: transparent;
+  }
   &.is-fullwidth {
     width: 100%;
   }
